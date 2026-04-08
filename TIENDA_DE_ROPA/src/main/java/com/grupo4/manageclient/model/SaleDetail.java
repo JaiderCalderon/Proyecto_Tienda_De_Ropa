@@ -55,10 +55,6 @@ public class SaleDetail {
         return subtotal;
     }
 
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
-    }
-
     private void recalculateSubtotal() {
         this.subtotal = this.unitPrice * this.quantity;
     }

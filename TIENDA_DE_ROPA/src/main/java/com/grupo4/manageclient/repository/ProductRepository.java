@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ProductRepository implements IProductRepository {
 
-    private List<Product> products;
+    private final List<Product> products;
 
     public ProductRepository() {
         this.products = new ArrayList<>();

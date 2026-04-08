@@ -58,10 +58,6 @@ public class Sale {
         return total;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
     public void addDetail(SaleDetail detail) {
         this.details.add(detail);
         calculateTotal();

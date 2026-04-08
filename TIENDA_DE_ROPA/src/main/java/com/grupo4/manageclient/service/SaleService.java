@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  *
- * @author samue
+ * @author samuel
  */
 public class SaleService {
 
@@ -35,10 +35,6 @@ public class SaleService {
 
         Product product = productService.findProductById(idProduct);
 
-        if (product == null) {
-            throw new IllegalArgumentException("Producto no encontrado.");
-        }
-
         if (product.getStock() < quantity) {
             throw new IllegalArgumentException("Stock insuficiente para el producto: " + product.getName());
         }
@@ -56,10 +52,6 @@ public class SaleService {
         }
 
         Client client = clientService.findClientById(idClient);
-
-        if (client == null) {
-            throw new IllegalArgumentException("Cliente no encontrado.");
-        }
 
         if (details == null || details.isEmpty()) {
             throw new IllegalArgumentException("La venta debe tener al menos un producto.");
