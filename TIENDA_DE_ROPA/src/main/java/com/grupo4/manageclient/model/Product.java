@@ -14,18 +14,18 @@ public class Product {
     private String name_product;
     private String size;
     private String color;
-    private double price;
+    private double unitPrice;
     private int stock;
 
     public Product() {
     }
 
-    public Product(int id, String name, String size, String color, double price, int stock) {
+    public Product(int id, String name, String size, String color, double unitPrice, int stock) {
         this.id_product = id;
         this.name_product = name;
         this.size = size;
         this.color = color;
-        this.price = price;
+        this.unitPrice = unitPrice;
         this.stock = stock;
     }
 
@@ -62,11 +62,11 @@ public class Product {
     }
 
     public double getPrice() {
-        return price;
+        return unitPrice;
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        this.unitPrice = price;
     }
 
     public int getStock() {
