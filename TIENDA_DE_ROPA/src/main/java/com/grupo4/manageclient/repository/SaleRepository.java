@@ -30,9 +30,9 @@ public class SaleRepository implements ISaleRepository {
     }
 
     @Override
-    public Sale findById(int id_sale) {
+    public Sale findById(int idSale) {
         for (Sale sale : sales) {
-            if (sale.getId_sale() == id_sale) {
+            if (sale.getIdSale() == idSale) {
                 return sale;
             }
         }

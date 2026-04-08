@@ -10,8 +10,8 @@ package com.grupo4.manageclient.model;
  */
 public class Product {
 
-    private int id_product;
-    private String name_product;
+    private int idProduct;
+    private String nameProduct;
     private String size;
     private String color;
     private double unitPrice;
@@ -20,9 +20,9 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, String name, String size, String color, double unitPrice, int stock) {
-        this.id_product = id;
-        this.name_product = name;
+    public Product(int idProduct, String nameProduct, String size, String color, double unitPrice, int stock) {
+        this.idProduct = idProduct;
+        this.nameProduct = nameProduct;
         this.size = size;
         this.color = color;
         this.unitPrice = unitPrice;
@@ -30,19 +30,19 @@ public class Product {
     }
 
     public int getId() {
-        return id_product;
+        return idProduct;
     }
 
-    public void setId(int id) {
-        this.id_product = id;
+    public void setId(int idProduct) {
+        this.idProduct = idProduct;
     }
 
     public String getName() {
-        return name_product;
+        return nameProduct;
     }
 
-    public void setName(String name) {
-        this.name_product = name;
+    public void setName(String nameProduct) {
+        this.nameProduct = nameProduct;
     }
 
     public String getSize() {

@@ -13,9 +13,9 @@ import java.util.List;
  */
 public interface ISaleRepository {
     void save(Sale sale);
-    
+
     List<Sale> getAllSales();
 
-    Sale findById(int id_sale);
+    Sale findById(int idSale);
 
 }

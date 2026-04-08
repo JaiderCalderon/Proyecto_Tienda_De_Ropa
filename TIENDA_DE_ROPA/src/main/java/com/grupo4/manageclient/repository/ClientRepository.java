@@ -31,9 +31,9 @@ public class ClientRepository implements IClientRepository {
     }
 
     @Override
-    public Client findById(int id) {
+    public Client findById(int idClient) {
         for (Client client : clients) {
-            if (client.getId() == id) {
+            if (client.getId() == idClient) {
                 return client;
             }
         }
@@ -54,10 +54,10 @@ public class ClientRepository implements IClientRepository {
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(int idClient) {
         for (int i = 0; i < clients.size(); i++) {
             Client currentClient = clients.get(i);
-            if (currentClient.getId() == id) {
+            if (currentClient.getId() == idClient) {
                 clients.remove(i);
                 return true;
             }

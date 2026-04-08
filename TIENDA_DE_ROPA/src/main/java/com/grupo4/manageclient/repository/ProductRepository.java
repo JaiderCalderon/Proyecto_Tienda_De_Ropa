@@ -31,9 +31,9 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public Product findById(int id) {
+    public Product findById(int idProduct) {
         for (Product product : products) {
-            if (product.getId() == id) {
+            if (product.getId() == idProduct) {
                 return product;
             }
         }
@@ -54,11 +54,11 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(int idProduct) {
         for (int i = 0; i < products.size(); i++) {
             Product currentProduct = products.get(i);
 
-            if (currentProduct.getId() == id) {
+            if (currentProduct.getId() == idProduct) {
                 products.remove(i);
                 return true;
             }

@@ -10,35 +10,35 @@ package com.grupo4.manageclient.model;
  */
 public class Client {
 
-    private int id;
-    private String name;
+    private int idClient;
+    private String nameClient;
     private String email;
     private String phoneNumber;
 
     public Client() {
     }
 
-    public Client(int id, String name, String email, String phoneNumber) {
-        this.id = id;
-        this.name = name;
+    public Client(int idClient, String nameClient, String email, String phoneNumber) {
+        this.idClient = idClient;
+        this.nameClient = nameClient;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
 
     public int getId() {
-        return id;
+        return idClient;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idClient) {
+        this.idClient = idClient;
     }
 
     public String getName() {
-        return name;
+        return nameClient;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String nameClient) {
+        this.nameClient = nameClient;
     }
 
     public String getEmail() {

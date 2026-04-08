@@ -62,7 +62,5 @@ public class SaleDetail {
     private void recalculateSubtotal() {
         this.subtotal = this.unitPrice * this.quantity;
     }
-    
-    
 
 }

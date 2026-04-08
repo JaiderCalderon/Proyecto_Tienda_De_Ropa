@@ -19,12 +19,12 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    private void validateProductData(int id_product, String name, String size, String color, double unitPrice,
+    private void validateProductData(int idProduct, String nameProduct, String size, String color, double unitPrice,
             int stock) {
-        if (id_product <= 0) {
+        if (idProduct <= 0) {
             throw new IllegalArgumentException("El ID del producto debe ser un número positivo.");
         }
-        if (name == null || name.trim().isEmpty()) {
+        if (nameProduct == null || nameProduct.trim().isEmpty()) {
             throw new IllegalArgumentException("El nombre del producto no puede estar vacío.");
         }
         if (size == null || size.trim().isEmpty()) {
@@ -41,14 +41,15 @@ public class ProductService {
         }
     }
 
-    public void registerProduct(int id_product, String name, String size, String color, double unitPrice, int stock) {
-        validateProductData(id_product, name, size, color, unitPrice, stock);
+    public void registerProduct(int idProduct, String nameProduct, String size, String color, double unitPrice,
+            int stock) {
+        validateProductData(idProduct, nameProduct, size, color, unitPrice, stock);
 
-        if (productRepository.findById(id_product) != null) {
+        if (productRepository.findById(idProduct) != null) {
             throw new IllegalArgumentException("El ID ya existe. Por favor, elige otro.");
         }
 
-        Product product = new Product(id_product, name, size, color, unitPrice, stock);
+        Product product = new Product(idProduct, nameProduct, size, color, unitPrice, stock);
         productRepository.save(product);
     }
 
@@ -56,24 +57,24 @@ public class ProductService {
         return productRepository.getAllProducts();
     }
 
-    public Product findProductById(int id_product) {
-        Product product = productRepository.findById(id_product);
+    public Product findProductById(int idProduct) {
+        Product product = productRepository.findById(idProduct);
         if (product == null) {
             throw new IllegalArgumentException("Producto no encontrado.");
         }
         return product;
     }
 
-    public void updateProduct(int id_product, String name, String size, String color, double unitPrice, int stock) {
-        validateProductData(id_product, name, size, color, unitPrice, stock);
+    public void updateProduct(int idProduct, String name, String size, String color, double unitPrice, int stock) {
+        validateProductData(idProduct, name, size, color, unitPrice, stock);
 
-        Product existingProduct = productRepository.findById(id_product);
+        Product existingProduct = productRepository.findById(idProduct);
 
         if (existingProduct == null) {
             throw new IllegalArgumentException("Producto no encontrado.");
         }
 
-        Product updatedProduct = new Product(id_product, name, size, color, unitPrice, stock);
+        Product updatedProduct = new Product(idProduct, name, size, color, unitPrice, stock);
         boolean update = productRepository.update(updatedProduct);
 
         if (!update) {
@@ -81,14 +82,14 @@ public class ProductService {
         }
     }
 
-    public void deleteProduct(int id_product) {
-        Product existingProduct = productRepository.findById(id_product);
+    public void deleteProduct(int idProduct) {
+        Product existingProduct = productRepository.findById(idProduct);
 
         if (existingProduct == null) {
             throw new IllegalArgumentException("Producto no encontrado.");
         }
 
-        boolean deleted = productRepository.delete(id_product);
+        boolean deleted = productRepository.delete(idProduct);
 
         if (!deleted) {
             throw new RuntimeException("Error al eliminar el producto.");

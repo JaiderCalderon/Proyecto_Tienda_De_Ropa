@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Sale {
 
-    private int id_sale;
+    private int idSale;
     private Client client;
     private List<SaleDetail> details;
     private double total;
@@ -22,19 +22,19 @@ public class Sale {
         this.details = new ArrayList<>();
     }
 
-    public Sale(int id_sale, Client client, List<SaleDetail> details) {
-        this.id_sale = id_sale;
+    public Sale(int idSale, Client client, List<SaleDetail> details) {
+        this.idSale = idSale;
         this.client = client;
         this.details = new ArrayList<>();
         calculateTotal();
     }
 
-    public int getId_sale() {
-        return id_sale;
+    public int getIdSale() {
+        return idSale;
     }
 
-    public void setId_sale(int id_sale) {
-        this.id_sale = id_sale;
+    public void setIdSale(int idSale) {
+        this.idSale = idSale;
     }
 
     public Client getClient() {

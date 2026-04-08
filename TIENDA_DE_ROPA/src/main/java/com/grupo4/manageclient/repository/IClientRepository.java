@@ -17,10 +17,10 @@ public interface IClientRepository {
 
     List<Client> getAllClients();
 
-    Client findById(int id);
+    Client findById(int idClient);
 
     boolean update(Client client);
 
-    boolean delete(int id);
+    boolean delete(int idClient);
 
 }

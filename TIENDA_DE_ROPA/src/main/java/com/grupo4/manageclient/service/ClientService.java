@@ -20,12 +20,12 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
-    private void validateClientData(int id, String name, String email, String phoneNumber) {
-        if (id <= 0) {
+    private void validateClientData(int idClient, String nameClient, String email, String phoneNumber) {
+        if (idClient <= 0) {
             throw new IllegalArgumentException("El ID debe ser un número positivo mayor que cero.");
         }
 
-        if (name == null || name.trim().isEmpty()) {
+        if (nameClient == null || nameClient.trim().isEmpty()) {
             throw new IllegalArgumentException("El nombre es obligatorio.");
         }
 
@@ -37,14 +37,14 @@ public class ClientService {
         }
     }
 
-    public void registerClient(int id, String name, String email, String phoneNumber) {
-        validateClientData(id, name, email, phoneNumber);
+    public void registerClient(int idClient, String nameClient, String email, String phoneNumber) {
+        validateClientData(idClient, nameClient, email, phoneNumber);
 
-        if (clientRepository.findById(id) != null) {
+        if (clientRepository.findById(idClient) != null) {
             throw new IllegalArgumentException("El ID ya existe. Por favor, elige otro.");
         }
 
-        Client client = new Client(id, name, email, phoneNumber);
+        Client client = new Client(idClient, nameClient, email, phoneNumber);
         clientRepository.save(client);
 
     }
@@ -53,24 +53,24 @@ public class ClientService {
         return clientRepository.getAllClients();
     }
 
-    public Client findClientById(int id) {
-        Client client = clientRepository.findById(id);
+    public Client findClientById(int idClient) {
+        Client client = clientRepository.findById(idClient);
         if (client == null) {
             throw new IllegalArgumentException("Cliente no encontrado.");
         }
         return client;
     }
 
-    public void updateClient(int id, String name, String email, String phoneNumber) {
-        validateClientData(id, name, email, phoneNumber);
+    public void updateClient(int idClient, String nameClient, String email, String phoneNumber) {
+        validateClientData(idClient, nameClient, email, phoneNumber);
 
-        Client existingClient = clientRepository.findById(id);
+        Client existingClient = clientRepository.findById(idClient);
 
         if (existingClient == null) {
             throw new IllegalArgumentException("Cliente no encontrado.");
         }
 
-        Client updatedClient = new Client(id, name, email, phoneNumber);
+        Client updatedClient = new Client(idClient, nameClient, email, phoneNumber);
         boolean update = clientRepository.update(updatedClient);
 
         if (!update) {
@@ -78,13 +78,13 @@ public class ClientService {
         }
     }
 
-    public void deleteClient(int id) {
-        Client existingClient = clientRepository.findById(id);
+    public void deleteClient(int idClient) {
+        Client existingClient = clientRepository.findById(idClient);
 
         if (existingClient == null) {
             throw new IllegalArgumentException("Cliente no encontrado.");
         }
-        boolean deleted = clientRepository.delete(id);
+        boolean deleted = clientRepository.delete(idClient);
 
         if (!deleted) {
             throw new IllegalStateException("Error al eliminar el cliente.");

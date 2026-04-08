@@ -28,12 +28,12 @@ public class SaleService {
         this.productService = productService;
     }
 
-    public SaleDetail createSaleDetail(int productId, int quantity) {
+    public SaleDetail createSaleDetail(int idProduct, int quantity) {
         if (quantity <= 0) {
             throw new IllegalArgumentException("La cantidad debe ser mayor que cero.");
         }
 
-        Product product = productService.findProductById(productId);
+        Product product = productService.findProductById(idProduct);
 
         if (product == null) {
             throw new IllegalArgumentException("Producto no encontrado.");
@@ -46,16 +46,16 @@ public class SaleService {
         return new SaleDetail(product, quantity);
     }
 
-    public void registerSale(int saleId, int clientId, List<SaleDetail> details) {
-        if (saleId <= 0) {
+    public void registerSale(int idSale, int idClient, List<SaleDetail> details) {
+        if (idSale <= 0) {
             throw new IllegalArgumentException("El ID de la venta debe ser mayor que cero.");
         }
 
-        if (saleRepository.findById(saleId) != null) {
+        if (saleRepository.findById(idSale) != null) {
             throw new IllegalArgumentException("Ya existe una venta con ese ID.");
         }
 
-        Client client = clientService.findClientById(clientId);
+        Client client = clientService.findClientById(idClient);
 
         if (client == null) {
             throw new IllegalArgumentException("Cliente no encontrado.");
@@ -68,7 +68,7 @@ public class SaleService {
         validateDetails(details);
         discountStock(details);
 
-        Sale sale = new Sale(saleId, client, new ArrayList<>(details));
+        Sale sale = new Sale(idSale, client, new ArrayList<>(details));
         saleRepository.save(sale);
     }
 
@@ -76,8 +76,8 @@ public class SaleService {
         return saleRepository.getAllSales();
     }
 
-    public Sale findSaleById(int id) {
-        Sale sale = saleRepository.findById(id);
+    public Sale findSaleById(int idSale) {
+        Sale sale = saleRepository.findById(idSale);
 
         if (sale == null) {
             throw new IllegalArgumentException("Venta no encontrada.");

@@ -16,10 +16,10 @@ public interface IProductRepository {
 
     List<Product> getAllProducts();
 
-    Product findById(int id);
+    Product findById(int idProduct);
 
     boolean update(Product product);
 
-    boolean delete(int id);
+    boolean delete(int idProduct);
 
 }
