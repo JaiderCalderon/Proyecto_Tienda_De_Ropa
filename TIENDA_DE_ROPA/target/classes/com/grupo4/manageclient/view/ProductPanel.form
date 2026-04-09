@@ -17,51 +17,52 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <Component id="jToolBar1" min="-2" pref="524" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="lblIdProduct" min="-2" pref="42" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lblNameProduct" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblSizeProduct" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblColorProduct" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblUnitPrice" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblStock" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jToolBar1" min="-2" pref="524" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                      <Component id="lblIdProduct" min="-2" pref="42" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="lblNameProduct" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblSizeProduct" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblColorProduct" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblUnitPrice" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStock" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtColorPField" min="-2" pref="223" max="-2" attributes="0"/>
-                                  <Component id="txtProductField" min="-2" pref="223" max="-2" attributes="0"/>
-                                  <Component id="txtIdProductField" min="-2" pref="223" max="-2" attributes="0"/>
-                                  <Component id="txtSizePField" min="-2" pref="223" max="-2" attributes="0"/>
-                                  <Component id="txtUnitPriceField" min="-2" pref="223" max="-2" attributes="0"/>
-                                  <Component id="txtStockField" min="-2" pref="223" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="txtIdProductField" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="txtStockField" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="txtColorPField" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="txtProductField" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="txtSizePField" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="txtUnitPriceField" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
-                      <Component id="btnSaveProduct" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="137" max="32767" attributes="0"/>
+          </Group>
+          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
+              <Component id="btnSaveProduct" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jToolBar1" min="-2" pref="31" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtIdProductField" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="lblIdProduct" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -86,14 +87,15 @@
                   <Component id="lblUnitPrice" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtUnitPriceField" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblStock" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtStockField" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
               <Component id="btnSaveProduct" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="79" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="224" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -248,5 +250,34 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveProductActionPerformed"/>
       </Events>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="jTable1">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="6" rowCount="4">
+                    <Column editable="true" title="Codigo" type="java.lang.Object"/>
+                    <Column editable="true" title="Producto" type="java.lang.Object"/>
+                    <Column editable="true" title="Talla" type="java.lang.Object"/>
+                    <Column editable="true" title="Color" type="java.lang.Object"/>
+                    <Column editable="true" title="Precio" type="java.lang.Object"/>
+                    <Column editable="true" title="Stock" type="java.lang.Object"/>
+                  </Table>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
