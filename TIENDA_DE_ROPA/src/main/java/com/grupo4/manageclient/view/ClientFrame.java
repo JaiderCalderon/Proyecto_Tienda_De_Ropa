@@ -76,6 +76,8 @@ public class ClientFrame extends javax.swing.JFrame {
 
         lblPhone.setText("Telefono:");
 
+        btnSave.setText("Guardar");
+
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
