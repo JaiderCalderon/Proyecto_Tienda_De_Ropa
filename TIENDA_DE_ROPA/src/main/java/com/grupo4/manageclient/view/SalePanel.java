@@ -39,8 +39,8 @@ public class SalePanel extends javax.swing.JPanel {
         lblSaleSubtotal = new javax.swing.JLabel();
         btnConfirm = new javax.swing.JButton();
         lblDetails = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        lblHistory = new javax.swing.JLabel();
+        ScrollPaneSale = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblHistorial = new javax.swing.JTable();
 
@@ -79,9 +79,9 @@ public class SalePanel extends javax.swing.JPanel {
         lblDetails.setText("Detalles de la venta");
         lblDetails.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Historial de ventas");
-        jLabel1.setBorder(new javax.swing.border.MatteBorder(null));
+        lblHistory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHistory.setText("Historial de ventas");
+        lblHistory.setBorder(new javax.swing.border.MatteBorder(null));
 
         tblHistorial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -94,7 +94,7 @@ public class SalePanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblHistorial);
 
-        jScrollPane1.setViewportView(jScrollPane2);
+        ScrollPaneSale.setViewportView(jScrollPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -135,12 +135,12 @@ public class SalePanel extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(236, 236, 236))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnConfirm)
                         .addGap(256, 256, 256))))
-            .addComponent(jScrollPane1)
+            .addComponent(ScrollPaneSale)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,9 +168,9 @@ public class SalePanel extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addComponent(btnConfirm)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(lblHistory)
                 .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ScrollPaneSale, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSaleId)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -187,14 +187,14 @@ public class SalePanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane ScrollPaneSale;
     private javax.swing.JButton btnConfirm;
     private javax.swing.JComboBox<String> cmbClients;
     private javax.swing.JComboBox<String> cmbProducts;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblDetails;
+    private javax.swing.JLabel lblHistory;
     private javax.swing.JLabel lblProducto;
     private javax.swing.JLabel lblQuantity;
     private javax.swing.JLabel lblSaleId;

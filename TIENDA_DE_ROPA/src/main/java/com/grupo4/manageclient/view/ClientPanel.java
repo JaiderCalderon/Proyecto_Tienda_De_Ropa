@@ -26,19 +26,169 @@ public class ClientPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ToolBarClient = new javax.swing.JToolBar();
+        btnCreateC = new javax.swing.JButton();
+        btneditC = new javax.swing.JButton();
+        btnDeleteC = new javax.swing.JButton();
+        btnClearC = new javax.swing.JButton();
+        lblIdClient = new javax.swing.JLabel();
+        lblNameClient = new javax.swing.JLabel();
+        lblMailClient = new javax.swing.JLabel();
+        lblPhoneClient = new javax.swing.JLabel();
+        txtIdClient = new javax.swing.JTextField();
+        txtNameClient = new javax.swing.JTextField();
+        txtMailClient = new javax.swing.JTextField();
+        txtPhoneClient = new javax.swing.JTextField();
+        btnSaveClient = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        lblTableClient = new javax.swing.JLabel();
+        ScrollPaneClient = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TableClient = new javax.swing.JTable();
+
+        ToolBarClient.setRollover(true);
+
+        btnCreateC.setText("Crear Cliente");
+        btnCreateC.setFocusable(false);
+        btnCreateC.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCreateC.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ToolBarClient.add(btnCreateC);
+
+        btneditC.setText("Editar Cliente");
+        btneditC.setFocusable(false);
+        btneditC.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btneditC.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ToolBarClient.add(btneditC);
+
+        btnDeleteC.setText("Eliminar Cliente");
+        btnDeleteC.setFocusable(false);
+        btnDeleteC.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDeleteC.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ToolBarClient.add(btnDeleteC);
+
+        btnClearC.setText("Limpiar Formulario");
+        btnClearC.setFocusable(false);
+        btnClearC.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClearC.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ToolBarClient.add(btnClearC);
+
+        lblIdClient.setText("ID:");
+
+        lblNameClient.setText("Nombre:");
+
+        lblMailClient.setText("Correo:");
+
+        lblPhoneClient.setText("Teléfono:");
+
+        btnSaveClient.setText("Guardar");
+
+        lblTableClient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTableClient.setText("Tabla De Clientes");
+        lblTableClient.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        TableClient.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Correo", "Teléfono"
+            }
+        ));
+        jScrollPane2.setViewportView(TableClient);
+
+        ScrollPaneClient.setViewportView(jScrollPane2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSaveClient)
+                .addGap(333, 333, 333))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(lblNameClient)
+                                    .addComponent(lblPhoneClient)
+                                    .addComponent(lblMailClient)
+                                    .addComponent(lblIdClient))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtIdClient, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                                    .addComponent(txtNameClient)
+                                    .addComponent(txtMailClient)
+                                    .addComponent(txtPhoneClient)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(238, 238, 238)
+                                .addComponent(lblTableClient, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 254, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ScrollPaneClient))
+                    .addComponent(jSeparator1))
+                .addContainerGap())
+            .addComponent(ToolBarClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(ToolBarClient, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblIdClient)
+                    .addComponent(txtIdClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNameClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNameClient))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMailClient)
+                    .addComponent(txtMailClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPhoneClient)
+                    .addComponent(txtPhoneClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addComponent(btnSaveClient)
+                .addGap(24, 24, 24)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblTableClient, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(ScrollPaneClient, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane ScrollPaneClient;
+    private javax.swing.JTable TableClient;
+    private javax.swing.JToolBar ToolBarClient;
+    private javax.swing.JButton btnClearC;
+    private javax.swing.JButton btnCreateC;
+    private javax.swing.JButton btnDeleteC;
+    private javax.swing.JButton btnSaveClient;
+    private javax.swing.JButton btneditC;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblIdClient;
+    private javax.swing.JLabel lblMailClient;
+    private javax.swing.JLabel lblNameClient;
+    private javax.swing.JLabel lblPhoneClient;
+    private javax.swing.JLabel lblTableClient;
+    private javax.swing.JTextField txtIdClient;
+    private javax.swing.JTextField txtMailClient;
+    private javax.swing.JTextField txtNameClient;
+    private javax.swing.JTextField txtPhoneClient;
     // End of variables declaration//GEN-END:variables
 }

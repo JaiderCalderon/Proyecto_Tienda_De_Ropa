@@ -26,11 +26,11 @@ public class ProductPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToolBar1 = new javax.swing.JToolBar();
+        ToolBarProduct = new javax.swing.JToolBar();
         btnCreateP = new javax.swing.JButton();
         btnEditP = new javax.swing.JButton();
         btnDeleteP = new javax.swing.JButton();
-        btnClearProduct = new javax.swing.JButton();
+        btnClearP = new javax.swing.JButton();
         txtIdProductField = new javax.swing.JTextField();
         lblNameProduct = new javax.swing.JLabel();
         lblSizeProduct = new javax.swing.JLabel();
@@ -44,28 +44,28 @@ public class ProductPanel extends javax.swing.JPanel {
         txtUnitPriceField = new javax.swing.JTextField();
         txtStockField = new javax.swing.JTextField();
         btnSaveProduct = new java.awt.Button();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        ScrollPaneProduct = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TableProduct = new javax.swing.JTable();
 
-        jToolBar1.setRollover(true);
+        ToolBarProduct.setRollover(true);
 
         btnCreateP.setText("Crear Producto");
         btnCreateP.setMaximumSize(new java.awt.Dimension(92, 24));
         btnCreateP.setMinimumSize(new java.awt.Dimension(92, 24));
         btnCreateP.setPreferredSize(new java.awt.Dimension(76, 24));
         btnCreateP.addActionListener(this::btnCreatePActionPerformed);
-        jToolBar1.add(btnCreateP);
+        ToolBarProduct.add(btnCreateP);
 
         btnEditP.setLabel("Editar Producto");
-        jToolBar1.add(btnEditP);
+        ToolBarProduct.add(btnEditP);
 
         btnDeleteP.setText("Eliminar Producto");
-        jToolBar1.add(btnDeleteP);
+        ToolBarProduct.add(btnDeleteP);
 
-        btnClearProduct.setText("Limpiar Formulario");
-        btnClearProduct.addActionListener(this::btnClearProductActionPerformed);
-        jToolBar1.add(btnClearProduct);
+        btnClearP.setText("Limpiar Formulario");
+        btnClearP.addActionListener(this::btnClearPActionPerformed);
+        ToolBarProduct.add(btnClearP);
 
         lblNameProduct.setText("Producto:");
 
@@ -93,7 +93,7 @@ public class ProductPanel extends javax.swing.JPanel {
         btnSaveProduct.setName(""); // NOI18N
         btnSaveProduct.addActionListener(this::btnSaveProductActionPerformed);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TableProduct.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -104,9 +104,9 @@ public class ProductPanel extends javax.swing.JPanel {
                 "Codigo", "Producto", "Talla", "Color", "Precio", "Stock"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TableProduct);
 
-        jScrollPane2.setViewportView(jScrollPane1);
+        ScrollPaneProduct.setViewportView(jScrollPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -116,7 +116,7 @@ public class ProductPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ToolBarProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
@@ -138,7 +138,7 @@ public class ProductPanel extends javax.swing.JPanel {
                             .addComponent(txtSizePField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtUnitPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addComponent(jScrollPane2)
+            .addComponent(ScrollPaneProduct)
             .addGroup(layout.createSequentialGroup()
                 .addGap(228, 228, 228)
                 .addComponent(btnSaveProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,7 +148,7 @@ public class ProductPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ToolBarProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIdProductField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -176,7 +176,7 @@ public class ProductPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(btnSaveProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ScrollPaneProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         txtIdProductField.getAccessibleContext().setAccessibleName("Campo: Id del Producto");
@@ -198,9 +198,9 @@ public class ProductPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCreatePActionPerformed
 
-    private void btnClearProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearProductActionPerformed
+    private void btnClearPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnClearProductActionPerformed
+    }//GEN-LAST:event_btnClearPActionPerformed
 
     private void txtProductFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductFieldActionPerformed
         // TODO add your handling code here:
@@ -228,15 +228,15 @@ public class ProductPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClearProduct;
+    private javax.swing.JScrollPane ScrollPaneProduct;
+    private javax.swing.JTable TableProduct;
+    private javax.swing.JToolBar ToolBarProduct;
+    private javax.swing.JButton btnClearP;
     private javax.swing.JButton btnCreateP;
     private javax.swing.JButton btnDeleteP;
     private javax.swing.JButton btnEditP;
     private java.awt.Button btnSaveProduct;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblColorProduct;
     private javax.swing.JLabel lblIdProduct;
     private javax.swing.JLabel lblNameProduct;
