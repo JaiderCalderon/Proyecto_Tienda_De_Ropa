@@ -31,103 +31,33 @@ public class ClientPanel extends javax.swing.JPanel {
 
     private final ClientService clientService;
 
-    private final JTextField txtClientId;
-    private final JTextField txtClientName;
-    private final JTextField txtClientEmail;
-    private final JTextField txtClientPhone;
-    private final JButton btnNewClient;
-    private final JButton btnSaveClient;
-    private final JButton btnUpdateClient;
-    private final JButton btnDeleteClient;
-    private final JButton btnClearClient;
-    private final JTable tblClients;
-    private final DefaultTableModel clientTableModel;
-
     public ClientPanel(ClientService clientService) {
         this.clientService = clientService;
-        this.txtClientId = new JTextField(20);
-        this.txtClientName = new JTextField(20);
-        this.txtClientEmail = new JTextField(20);
-        this.txtClientPhone = new JTextField(20);
-        this.btnNewClient = new JButton("Nuevo");
-        this.btnSaveClient = new JButton("Guardar");
-        this.btnUpdateClient = new JButton("Editar");
-        this.btnDeleteClient = new JButton("Eliminar");
-        this.btnClearClient = new JButton("Limpiar");
-        this.clientTableModel = new DefaultTableModel(
-                new Object[] { "ID", "Nombre", "Correo", "Teléfono" }, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        this.tblClients = new JTable(clientTableModel);
-
-        buildUi();
+        initComponents();
+        configureTable();
         bindEvents();
         refreshClientTable();
     }
 
-    private void buildUi() {
-        setLayout(new BorderLayout(10, 10));
-        setBorder(new EmptyBorder(15, 15, 15, 15));
-
-        JPanel actionPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        actionPanel.add(btnNewClient);
-        actionPanel.add(btnSaveClient);
-        actionPanel.add(btnUpdateClient);
-        actionPanel.add(btnDeleteClient);
-        actionPanel.add(btnClearClient);
-
-        JPanel formPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.anchor = GridBagConstraints.WEST;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        formPanel.add(new JLabel("ID:"), gbc);
-        gbc.gridx = 1;
-        formPanel.add(txtClientId, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        formPanel.add(new JLabel("Nombre:"), gbc);
-        gbc.gridx = 1;
-        formPanel.add(txtClientName, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        formPanel.add(new JLabel("Correo:"), gbc);
-        gbc.gridx = 1;
-        formPanel.add(txtClientEmail, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        formPanel.add(new JLabel("Teléfono:"), gbc);
-        gbc.gridx = 1;
-        formPanel.add(txtClientPhone, gbc);
-
-        tblClients.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        JScrollPane clientScrollPane = new JScrollPane(tblClients);
-
-        JPanel topPanel = new JPanel(new BorderLayout(10, 10));
-        topPanel.add(actionPanel, BorderLayout.NORTH);
-        topPanel.add(formPanel, BorderLayout.CENTER);
-
-        add(topPanel, BorderLayout.NORTH);
-        add(clientScrollPane, BorderLayout.CENTER);
+    private void configureTable() {
+        TableClient.setModel(new DefaultTableModel(
+                new Object[]{"ID", "Nombre", "Correo", "Teléfono"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        });
+        TableClient.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 
     private void bindEvents() {
-        btnNewClient.addActionListener(e -> clearForm());
-        btnClearClient.addActionListener(e -> clearForm());
+        btnCreateC.addActionListener(e -> clearForm());
+        btnClearC.addActionListener(e -> clearForm());
         btnSaveClient.addActionListener(e -> saveClient());
-        btnUpdateClient.addActionListener(e -> updateClient());
-        btnDeleteClient.addActionListener(e -> deleteClient());
+        btneditC.addActionListener(e -> updateClient());
+        btnDeleteC.addActionListener(e -> deleteClient());
 
-        tblClients.getSelectionModel().addListSelectionListener(event -> {
+        TableClient.getSelectionModel().addListSelectionListener(event -> {
             if (!event.getValueIsAdjusting()) {
                 loadSelectedClient();
             }
@@ -137,10 +67,10 @@ public class ClientPanel extends javax.swing.JPanel {
     private void saveClient() {
         try {
             clientService.registerClient(
-                    parseInteger(txtClientId.getText(), "ID del cliente"),
-                    txtClientName.getText().trim(),
-                    txtClientEmail.getText().trim(),
-                    txtClientPhone.getText().trim());
+                    parseInteger(txtIdClient.getText(), "ID del cliente"),
+                    txtNameClient.getText().trim(),
+                    txtMailClient.getText().trim(),
+                    txtPhoneClient.getText().trim());
 
             refreshClientTable();
             clearForm();
@@ -187,11 +117,11 @@ public class ClientPanel extends javax.swing.JPanel {
         clientTableModel.setRowCount(0);
         List<Client> clients = clientService.getAllClients();
         for (Client client : clients) {
-            clientTableModel.addRow(new Object[] {
-                    client.getId(),
-                    client.getName(),
-                    client.getEmail(),
-                    client.getPhoneNumber()
+            clientTableModel.addRow(new Object[]{
+                client.getId(),
+                client.getName(),
+                client.getEmail(),
+                client.getPhoneNumber()
             });
         }
     }
