@@ -26,6 +26,9 @@ public class Sale {
         this.idSale = idSale;
         this.client = client;
         this.details = new ArrayList<>();
+        if (details != null) {
+            this.details.addAll(details);
+        }
         calculateTotal();
     }
 
@@ -69,5 +72,4 @@ public class Sale {
             this.total += detail.getSubtotal();
         }
     }
-
 }
