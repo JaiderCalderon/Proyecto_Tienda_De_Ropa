@@ -6,21 +6,9 @@ package com.grupo4.manageclient.view;
 
 import com.grupo4.manageclient.model.Product;
 import com.grupo4.manageclient.service.ProductService;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.util.List;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -31,98 +19,33 @@ public class ProductPanel extends javax.swing.JPanel {
 
     private final ProductService productService;
 
-    private final JTextField txtProductId;
-    private final JTextField txtProductName;
-    private final JTextField txtProductSize;
-    private final JTextField txtProductColor;
-    private final JTextField txtProductPrice;
-    private final JTextField txtProductStock;
-    private final JButton btnNewProduct;
-    private final JButton btnSaveProduct;
-    private final JButton btnUpdateProduct;
-    private final JButton btnDeleteProduct;
-    private final JButton btnClearProduct;
-    private final JTable tblProducts;
-    private final DefaultTableModel productTableModel;
-
     public ProductPanel(ProductService productService) {
         this.productService = productService;
-        this.txtProductId = new JTextField(20);
-        this.txtProductName = new JTextField(20);
-        this.txtProductSize = new JTextField(20);
-        this.txtProductColor = new JTextField(20);
-        this.txtProductPrice = new JTextField(20);
-        this.txtProductStock = new JTextField(20);
-        this.btnNewProduct = new JButton("Nuevo");
-        this.btnSaveProduct = new JButton("Guardar");
-        this.btnUpdateProduct = new JButton("Editar");
-        this.btnDeleteProduct = new JButton("Eliminar");
-        this.btnClearProduct = new JButton("Limpiar");
-        this.productTableModel = new DefaultTableModel(
-                new Object[] { "Código", "Producto", "Talla", "Color", "Precio", "Stock" }, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        this.tblProducts = new JTable(productTableModel);
-
-        buildUi();
+        initComponents();
+        configureTable();
         bindEvents();
         refreshProductTable();
     }
 
-    private void buildUi() {
-        setLayout(new BorderLayout(10, 10));
-        setBorder(new EmptyBorder(15, 15, 15, 15));
-
-        JPanel actionPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        actionPanel.add(btnNewProduct);
-        actionPanel.add(btnSaveProduct);
-        actionPanel.add(btnUpdateProduct);
-        actionPanel.add(btnDeleteProduct);
-        actionPanel.add(btnClearProduct);
-
-        JPanel formPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.anchor = GridBagConstraints.WEST;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        addFormRow(formPanel, gbc, 0, "Código:", txtProductId);
-        addFormRow(formPanel, gbc, 1, "Producto:", txtProductName);
-        addFormRow(formPanel, gbc, 2, "Talla:", txtProductSize);
-        addFormRow(formPanel, gbc, 3, "Color:", txtProductColor);
-        addFormRow(formPanel, gbc, 4, "Precio:", txtProductPrice);
-        addFormRow(formPanel, gbc, 5, "Stock:", txtProductStock);
-
-        tblProducts.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        JScrollPane productScrollPane = new JScrollPane(tblProducts);
-
-        JPanel topPanel = new JPanel(new BorderLayout(10, 10));
-        topPanel.add(actionPanel, BorderLayout.NORTH);
-        topPanel.add(formPanel, BorderLayout.CENTER);
-
-        add(topPanel, BorderLayout.NORTH);
-        add(productScrollPane, BorderLayout.CENTER);
-    }
-
-    private void addFormRow(JPanel panel, GridBagConstraints gbc, int row, String label, JTextField field) {
-        gbc.gridx = 0;
-        gbc.gridy = row;
-        panel.add(new JLabel(label), gbc);
-        gbc.gridx = 1;
-        panel.add(field, gbc);
+    private void configureTable() {
+        TableProduct.setModel(new DefaultTableModel(
+                new Object[]{"Código", "Producto", "Talla", "Color", "Precio", "Stock"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        });
+        TableProduct.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 
     private void bindEvents() {
-        btnNewProduct.addActionListener(e -> clearForm());
-        btnClearProduct.addActionListener(e -> clearForm());
+        btnCreateP.addActionListener(e -> clearForm());
+        btnClearP.addActionListener(e -> clearForm());
         btnSaveProduct.addActionListener(e -> saveProduct());
-        btnUpdateProduct.addActionListener(e -> updateProduct());
-        btnDeleteProduct.addActionListener(e -> deleteProduct());
+        btnEditP.addActionListener(e -> updateProduct());
+        btnDeleteP.addActionListener(e -> deleteProduct());
 
-        tblProducts.getSelectionModel().addListSelectionListener(event -> {
+        TableProduct.getSelectionModel().addListSelectionListener(event -> {
             if (!event.getValueIsAdjusting()) {
                 loadSelectedProduct();
             }
@@ -132,12 +55,12 @@ public class ProductPanel extends javax.swing.JPanel {
     private void saveProduct() {
         try {
             productService.registerProduct(
-                    parseInteger(txtProductId.getText(), "código"),
-                    txtProductName.getText().trim(),
-                    txtProductSize.getText().trim(),
-                    txtProductColor.getText().trim(),
-                    parseDouble(txtProductPrice.getText(), "precio"),
-                    parseInteger(txtProductStock.getText(), "stock"));
+                    parseInteger(txtIdProductField.getText(), "código"),
+                    txtProductField.getText().trim(),
+                    txtSizePField.getText().trim(),
+                    txtColorPField.getText().trim(),
+                    parseDouble(txtUnitPriceField.getText(), "precio"),
+                    parseInteger(txtStockField.getText(), "stock"));
 
             refreshProductTable();
             clearForm();
@@ -150,12 +73,12 @@ public class ProductPanel extends javax.swing.JPanel {
     private void updateProduct() {
         try {
             productService.updateProduct(
-                    parseInteger(txtProductId.getText(), "código"),
-                    txtProductName.getText().trim(),
-                    txtProductSize.getText().trim(),
-                    txtProductColor.getText().trim(),
-                    parseDouble(txtProductPrice.getText(), "precio"),
-                    parseInteger(txtProductStock.getText(), "stock"));
+                    parseInteger(txtIdProductField.getText(), "código"),
+                    txtProductField.getText().trim(),
+                    txtSizePField.getText().trim(),
+                    txtColorPField.getText().trim(),
+                    parseDouble(txtUnitPriceField.getText(), "precio"),
+                    parseInteger(txtStockField.getText(), "stock"));
 
             refreshProductTable();
             clearForm();
@@ -167,12 +90,12 @@ public class ProductPanel extends javax.swing.JPanel {
 
     private void deleteProduct() {
         try {
-            int selectedRow = tblProducts.getSelectedRow();
+            int selectedRow = TableProduct.getSelectedRow();
             if (selectedRow == -1) {
                 throw new IllegalArgumentException("Selecciona un producto para eliminar.");
             }
 
-            int idProduct = Integer.parseInt(tblProducts.getValueAt(selectedRow, 0).toString());
+            int idProduct = Integer.parseInt(TableProduct.getValueAt(selectedRow, 0).toString());
             productService.deleteProduct(idProduct);
             refreshProductTable();
             clearForm();
@@ -183,16 +106,18 @@ public class ProductPanel extends javax.swing.JPanel {
     }
 
     private void refreshProductTable() {
-        productTableModel.setRowCount(0);
+        DefaultTableModel model = (DefaultTableModel) TableProduct.getModel();
+        model.setRowCount(0);
+
         List<Product> products = productService.getAllProducts();
         for (Product product : products) {
-            productTableModel.addRow(new Object[] {
-                    product.getId(),
-                    product.getName(),
-                    product.getSize(),
-                    product.getColor(),
-                    product.getPrice(),
-                    product.getStock()
+            model.addRow(new Object[]{
+                product.getId(),
+                product.getName(),
+                product.getSize(),
+                product.getColor(),
+                product.getPrice(),
+                product.getStock()
             });
         }
     }
@@ -202,28 +127,28 @@ public class ProductPanel extends javax.swing.JPanel {
     }
 
     private void loadSelectedProduct() {
-        int selectedRow = tblProducts.getSelectedRow();
+        int selectedRow = TableProduct.getSelectedRow();
         if (selectedRow == -1) {
             return;
         }
 
-        txtProductId.setText(tblProducts.getValueAt(selectedRow, 0).toString());
-        txtProductName.setText(tblProducts.getValueAt(selectedRow, 1).toString());
-        txtProductSize.setText(tblProducts.getValueAt(selectedRow, 2).toString());
-        txtProductColor.setText(tblProducts.getValueAt(selectedRow, 3).toString());
-        txtProductPrice.setText(tblProducts.getValueAt(selectedRow, 4).toString());
-        txtProductStock.setText(tblProducts.getValueAt(selectedRow, 5).toString());
+        txtIdProductField.setText(TableProduct.getValueAt(selectedRow, 0).toString());
+        txtProductField.setText(TableProduct.getValueAt(selectedRow, 1).toString());
+        txtSizePField.setText(TableProduct.getValueAt(selectedRow, 2).toString());
+        txtColorPField.setText(TableProduct.getValueAt(selectedRow, 3).toString());
+        txtUnitPriceField.setText(TableProduct.getValueAt(selectedRow, 4).toString());
+        txtStockField.setText(TableProduct.getValueAt(selectedRow, 5).toString());
     }
 
     private void clearForm() {
-        txtProductId.setText("");
-        txtProductName.setText("");
-        txtProductSize.setText("");
-        txtProductColor.setText("");
-        txtProductPrice.setText("");
-        txtProductStock.setText("");
-        tblProducts.clearSelection();
-        txtProductId.requestFocus();
+        txtIdProductField.setText("");
+        txtProductField.setText("");
+        txtSizePField.setText("");
+        txtColorPField.setText("");
+        txtUnitPriceField.setText("");
+        txtStockField.setText("");
+        TableProduct.clearSelection();
+        txtIdProductField.requestFocus();
     }
 
     private int parseInteger(String value, String fieldName) {
@@ -255,7 +180,6 @@ public class ProductPanel extends javax.swing.JPanel {
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
      */
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -277,7 +201,7 @@ public class ProductPanel extends javax.swing.JPanel {
         txtSizePField = new javax.swing.JTextField();
         txtUnitPriceField = new javax.swing.JTextField();
         txtStockField = new javax.swing.JTextField();
-        btnSaveProduct = new java.awt.Button();
+        btnSaveProduct = new javax.swing.JButton();
         ScrollPaneProduct = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableProduct = new javax.swing.JTable();
@@ -291,7 +215,7 @@ public class ProductPanel extends javax.swing.JPanel {
         btnCreateP.addActionListener(this::btnCreatePActionPerformed);
         ToolBarProduct.add(btnCreateP);
 
-        btnEditP.setLabel("Editar Producto");
+        btnEditP.setText("Editar Producto");
         ToolBarProduct.add(btnEditP);
 
         btnDeleteP.setText("Eliminar Producto");
@@ -323,7 +247,7 @@ public class ProductPanel extends javax.swing.JPanel {
 
         txtStockField.addActionListener(this::txtStockFieldActionPerformed);
 
-        btnSaveProduct.setLabel("Guardar");
+        btnSaveProduct.setText("Guardar");
         btnSaveProduct.setName(""); // NOI18N
         btnSaveProduct.addActionListener(this::btnSaveProductActionPerformed);
 
@@ -494,7 +418,7 @@ public class ProductPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnCreateP;
     private javax.swing.JButton btnDeleteP;
     private javax.swing.JButton btnEditP;
-    private java.awt.Button btnSaveProduct;
+    private javax.swing.JButton btnSaveProduct;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblColorProduct;
     private javax.swing.JLabel lblIdProduct;

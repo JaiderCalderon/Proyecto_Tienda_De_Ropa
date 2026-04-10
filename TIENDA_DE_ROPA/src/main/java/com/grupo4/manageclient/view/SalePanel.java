@@ -11,25 +11,9 @@ import com.grupo4.manageclient.model.SaleDetail;
 import com.grupo4.manageclient.service.ClientService;
 import com.grupo4.manageclient.service.ProductService;
 import com.grupo4.manageclient.service.SaleService;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -42,199 +26,28 @@ public class SalePanel extends javax.swing.JPanel {
     private final ClientService clientService;
     private final ProductService productService;
 
-    private final JTextField txtSaleId;
-    private final JComboBox<ClientItem> cmbClients;
-    private final JComboBox<ProductItem> cmbProducts;
-    private final JTextField txtQuantity;
-    private final JButton btnAddDetail;
-    private final JButton btnRemoveDetail;
-    private final JButton btnConfirmSale;
-    private final JButton btnClearSale;
-    private final JTable tblSaleDetails;
-    private final JTable tblSalesHistory;
-    private final DefaultTableModel saleDetailTableModel;
-    private final DefaultTableModel saleHistoryTableModel;
-    private final JLabel lblTotalValue;
-
-    private final List<SaleDetail> currentDetails;
-
-    public SalePanel(SaleService saleService, ClientService clientService, ProductService productService, javax.swing.JComboBox<com.grupo4.manageclient.view.SalePanel.ClientItem> cmbClients) {
+    public SalePanel(SaleService saleService, ClientService clientService, ProductService productService) {
         this.saleService = saleService;
         this.clientService = clientService;
         this.productService = productService;
-        this.txtSaleId = new JTextField(15);
-        this.cmbClients = new JComboBox<>();
-        this.cmbProducts = new JComboBox<>();
-        this.txtQuantity = new JTextField(10);
-        this.btnAddDetail = new JButton("Agregar producto");
-        this.btnRemoveDetail = new JButton("Quitar producto");
-        this.btnConfirmSale = new JButton("Confirmar venta");
-        this.btnClearSale = new JButton("Limpiar venta");
-        this.saleDetailTableModel = new DefaultTableModel(
-                new Object[] { "Código", "Producto", "Cantidad", "Precio unitario", "Subtotal" }, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        this.saleHistoryTableModel = new DefaultTableModel(
-                new Object[] { "Id de venta", "Cliente", "Total" }, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        this.tblSaleDetails = new JTable(saleDetailTableModel);
-        this.tblSalesHistory = new JTable(saleHistoryTableModel);
-        this.lblTotalValue = new JLabel("Total: 0.0");
-        this.currentDetails = new ArrayList<>();
-
-        buildUi();
+        initComponents();
+        configureTables();
         bindEvents();
         reloadData();
-        this.cmbClients = cmbClients;
     }
 
-    private void buildUi() {
-        setLayout(new BorderLayout(10, 10));
-        setBorder(new EmptyBorder(15, 15, 15, 15));
-
-        JPanel formPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.anchor = GridBagConstraints.WEST;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        addFormRow(formPanel, gbc, 0, "Id venta:", txtSaleId);
-        addFormRow(formPanel, gbc, 1, "Cliente:", cmbClients);
-        addFormRow(formPanel, gbc, 2, "Producto:", cmbProducts);
-        addFormRow(formPanel, gbc, 3, "Cantidad:", txtQuantity);
-
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        buttonPanel.add(btnAddDetail);
-        buttonPanel.add(btnRemoveDetail);
-        buttonPanel.add(btnConfirmSale);
-        buttonPanel.add(btnClearSale);
-        buttonPanel.add(lblTotalValue);
-
-        JPanel topPanel = new JPanel(new BorderLayout(10, 10));
-        topPanel.add(formPanel, BorderLayout.CENTER);
-        topPanel.add(buttonPanel, BorderLayout.SOUTH);
-
-        JScrollPane detailScrollPane = new JScrollPane(tblSaleDetails);
-        JScrollPane historyScrollPane = new JScrollPane(tblSalesHistory);
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, detailScrollPane, historyScrollPane);
-        splitPane.setResizeWeight(0.45);
-
-        add(topPanel, BorderLayout.NORTH);
-        add(splitPane, BorderLayout.CENTER);
-    }
-
-    private void addFormRow(JPanel panel, GridBagConstraints gbc, int row, String label, java.awt.Component component) {
-        gbc.gridx = 0;
-        gbc.gridy = row;
-        panel.add(new JLabel(label), gbc);
-        gbc.gridx = 1;
-        panel.add(component, gbc);
+    private void configureTables() {
+        tblHistorial.setModel(new DefaultTableModel(
+                new Object[]{"Id de venta", "Cliente", "Total"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        });
     }
 
     private void bindEvents() {
-        btnAddDetail.addActionListener(e -> addDetail());
-        btnRemoveDetail.addActionListener(e -> removeDetail());
-        btnConfirmSale.addActionListener(e -> confirmSale());
-        btnClearSale.addActionListener(e -> clearSale());
-    }
-
-    private void addDetail() {
-        try {
-            ProductItem selectedProductItem = (ProductItem) cmbProducts.getSelectedItem();
-            if (selectedProductItem == null) {
-                throw new IllegalArgumentException("Debes seleccionar un producto.");
-            }
-
-            int quantity = parseInteger(txtQuantity.getText(), "cantidad");
-            SaleDetail detail = saleService.createSaleDetail(selectedProductItem.product.getId(), quantity);
-            currentDetails.add(detail);
-            refreshDetailTable();
-            txtQuantity.setText("");
-        } catch (Exception ex) {
-            showError(ex.getMessage());
-        }
-    }
-
-    private void removeDetail() {
-        int selectedRow = tblSaleDetails.getSelectedRow();
-        if (selectedRow == -1) {
-            showError("Selecciona un producto del detalle para quitarlo.");
-            return;
-        }
-
-        currentDetails.remove(selectedRow);
-        refreshDetailTable();
-    }
-
-    private void confirmSale() {
-        try {
-            ClientItem selectedClientItem = (ClientItem) cmbClients.getSelectedItem();
-            if (selectedClientItem == null) {
-                throw new IllegalArgumentException("Debes seleccionar un cliente.");
-            }
-
-            int idSale = parseInteger(txtSaleId.getText(), "id de venta");
-            List<SaleDetail> groupedDetails = mergeDetails(currentDetails);
-            saleService.registerSale(idSale, selectedClientItem.client.getId(), groupedDetails);
-
-            reloadData();
-            clearSale();
-            showMessage("Venta registrada correctamente.");
-        } catch (Exception ex) {
-            showError(ex.getMessage());
-        }
-    }
-
-    private List<SaleDetail> mergeDetails(List<SaleDetail> details) {
-        if (details.isEmpty()) {
-            throw new IllegalArgumentException("La venta debe tener al menos un producto agregado.");
-        }
-
-        Map<Integer, SaleDetail> grouped = new LinkedHashMap<>();
-        for (SaleDetail detail : details) {
-            int productId = detail.getProduct().getId();
-            if (grouped.containsKey(productId)) {
-                SaleDetail existing = grouped.get(productId);
-                existing.setQuantity(existing.getQuantity() + detail.getQuantity());
-            } else {
-                grouped.put(productId, new SaleDetail(detail.getProduct(), detail.getQuantity()));
-            }
-        }
-        return new ArrayList<>(grouped.values());
-    }
-
-    private void refreshDetailTable() {
-        saleDetailTableModel.setRowCount(0);
-        double total = 0;
-        for (SaleDetail detail : currentDetails) {
-            saleDetailTableModel.addRow(new Object[] {
-                    detail.getProduct().getId(),
-                    detail.getProduct().getName(),
-                    detail.getQuantity(),
-                    detail.getUnitPrice(),
-                    detail.getSubtotal()
-            });
-            total += detail.getSubtotal();
-        }
-        lblTotalValue.setText("Total: " + total);
-    }
-
-    private void refreshSalesHistory() {
-        saleHistoryTableModel.setRowCount(0);
-        for (Sale sale : saleService.getAllSales()) {
-            saleHistoryTableModel.addRow(new Object[] {
-                    sale.getIdSale(),
-                    sale.getClient().getName(),
-                    sale.getTotal()
-            });
-        }
+        btnConfirm.addActionListener(e -> confirmSale());
     }
 
     private void loadClients() {
@@ -253,20 +66,80 @@ public class SalePanel extends javax.swing.JPanel {
         }
     }
 
+    private void updateDetailPreview(SaleDetail detail) {
+        lblSaleName.setText("ID: " + detail.getProduct().getId());
+        lblSaleQuantity.setText("Nombre: " + detail.getProduct().getName());
+        lblSaleUnitaryPrice.setText("Precio unitario: " + detail.getUnitPrice());
+        lblSaleSubtotal.setText("Subtotal: " + detail.getSubtotal());
+    }
+
+    private void clearDetailPreview() {
+        lblSaleName.setText("ID:");
+        lblSaleQuantity.setText("Nombre:");
+        lblSaleUnitaryPrice.setText("Precio unitario:");
+        lblSaleSubtotal.setText("Subtotal:");
+    }
+
+    private void confirmSale() {
+        try {
+            ClientItem selectedClientItem = (ClientItem) cmbClients.getSelectedItem();
+            ProductItem selectedProductItem = (ProductItem) cmbProducts.getSelectedItem();
+
+            if (selectedClientItem == null) {
+                throw new IllegalArgumentException("Debes seleccionar un cliente.");
+            }
+
+            if (selectedProductItem == null) {
+                throw new IllegalArgumentException("Debes seleccionar un producto.");
+            }
+
+            int idSale = generateNextSaleId();
+            int quantity = parseInteger(txtQuantity.getText(), "cantidad");
+
+            SaleDetail detail = saleService.createSaleDetail(selectedProductItem.product.getId(), quantity);
+            List<SaleDetail> details = new ArrayList<>();
+            details.add(detail);
+
+            saleService.registerSale(idSale, selectedClientItem.client.getId(), details);
+
+            updateDetailPreview(detail);
+            reloadData();
+            txtQuantity.setText("");
+            showMessage("Venta registrada correctamente.");
+        } catch (Exception ex) {
+            showError(ex.getMessage());
+        }
+    }
+
+    private int generateNextSaleId() {
+        List<Sale> sales = saleService.getAllSales();
+        int max = 0;
+        for (Sale sale : sales) {
+            if (sale.getIdSale() > max) {
+                max = sale.getIdSale();
+            }
+        }
+        return max + 1;
+    }
+
+    private void refreshSalesHistory() {
+        DefaultTableModel model = (DefaultTableModel) tblHistorial.getModel();
+        model.setRowCount(0);
+
+        for (Sale sale : saleService.getAllSales()) {
+            model.addRow(new Object[]{
+                sale.getIdSale(),
+                sale.getClient().getName(),
+                sale.getTotal()
+            });
+        }
+    }
+
     public void reloadData() {
         loadClients();
         loadProducts();
         refreshSalesHistory();
-        refreshDetailTable();
-    }
-
-    private void clearSale() {
-        txtSaleId.setText("");
-        txtQuantity.setText("");
-        currentDetails.clear();
-        refreshDetailTable();
-        tblSaleDetails.clearSelection();
-        txtSaleId.requestFocus();
+        clearDetailPreview();
     }
 
     private int parseInteger(String value, String fieldName) {
@@ -286,6 +159,7 @@ public class SalePanel extends javax.swing.JPanel {
     }
 
     private static class ClientItem {
+
         private final Client client;
 
         private ClientItem(Client client) {
@@ -299,6 +173,7 @@ public class SalePanel extends javax.swing.JPanel {
     }
 
     private static class ProductItem {
+
         private final Product product;
 
         private ProductItem(Product product) {
@@ -316,7 +191,6 @@ public class SalePanel extends javax.swing.JPanel {
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
      */
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -339,8 +213,7 @@ public class SalePanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblHistorial = new javax.swing.JTable();
 
-        cmbClients.setModel(
-                new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbClients.setModel(new javax.swing.DefaultComboBoxModel<ClientItem>());
         cmbClients.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbClientsActionPerformed(evt);
@@ -349,8 +222,7 @@ public class SalePanel extends javax.swing.JPanel {
 
         lblCliente.setText("Cliente");
 
-        cmbProducts.setModel(
-                new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbProducts.setModel(new javax.swing.DefaultComboBoxModel<ProductItem>());
         cmbProducts.setToolTipText("");
 
         lblProducto.setText("Producto");
@@ -519,15 +391,15 @@ public class SalePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }// GEN-LAST:event_cmbClientsActionPerformed
 
-    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnConfirmActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_btnConfirmActionPerformed
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {
+        confirmSale();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPaneSale;
     private javax.swing.JButton btnConfirm;
-    private javax.swing.JComboBox<String> cmbClients;
-    private javax.swing.JComboBox<String> cmbProducts;
+    private javax.swing.JComboBox<ClientItem> cmbClients;
+    private javax.swing.JComboBox<ProductItem> cmbProducts;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblDetails;

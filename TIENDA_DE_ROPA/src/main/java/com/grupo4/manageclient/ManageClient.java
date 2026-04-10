@@ -64,7 +64,7 @@ class MainFrame extends JFrame {
         this.saleService = new SaleService(saleRepository, clientService, productService);
         this.clientPanel = new ClientPanel(clientService);
         this.productPanel = new ProductPanel(productService);
-        this.salePanel = new SalePanel(saleService, clientService, productService, null);
+        this.salePanel = new SalePanel(saleService, clientService, productService);
 
         initializeFrame();
     }
