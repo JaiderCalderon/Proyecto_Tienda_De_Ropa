@@ -58,7 +58,7 @@ public class SalePanel extends javax.swing.JPanel {
 
     private final List<SaleDetail> currentDetails;
 
-    public SalePanel(SaleService saleService, ClientService clientService, ProductService productService) {
+    public SalePanel(SaleService saleService, ClientService clientService, ProductService productService, javax.swing.JComboBox<com.grupo4.manageclient.view.SalePanel.ClientItem> cmbClients) {
         this.saleService = saleService;
         this.clientService = clientService;
         this.productService = productService;
@@ -92,6 +92,7 @@ public class SalePanel extends javax.swing.JPanel {
         buildUi();
         bindEvents();
         reloadData();
+        this.cmbClients = cmbClients;
     }
 
     private void buildUi() {
