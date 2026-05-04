@@ -179,12 +179,16 @@ public class SalePanel extends javax.swing.JPanel {
 
     for (Sale sale : saleService.getAllSales()) {
         StringBuilder productsSold = new StringBuilder();
-
-        for (SaleDetail detail : sale.getDetails()) {
-            productsSold.append(detail.getProduct().getName())
-                    .append(" x")
-                    .append(detail.getQuantity())
-                    .append(", ");
+        
+        if (sale.getDetails() != null) {
+            for (SaleDetail detail : sale.getDetails()) {
+                if (detail != null && detail.getProduct() != null) {
+                    productsSold.append(detail.getProduct().getName())
+                            .append(" x")
+                            .append(detail.getQuantity())
+                            .append(", ");
+                }
+            }
         }
 
         if (productsSold.length() > 0) {
