@@ -1,17 +1,17 @@
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\ManageClient.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\model\Client.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\model\Product.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\model\Sale.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\model\SaleDetail.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\repository\ClientRepository.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\repository\IClientRepository.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\repository\IProductRepository.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\repository\ISaleRepository.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\repository\ProductRepository.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\repository\SaleRepository.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\service\ClientService.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\service\ProductService.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\service\SaleService.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\view\ClientPanel.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\view\ProductPanel.java
-C:\Jaider\Estudio\Programas\Repositorios\Proyecto_Tienda_De_Ropa\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\view\SalePanel.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\ManageClient.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\model\Client.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\model\Product.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\model\Sale.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\model\SaleDetail.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\repository\ClientRepository.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\repository\IClientRepository.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\repository\IProductRepository.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\repository\ISaleRepository.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\repository\ProductRepository.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\repository\SaleRepository.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\service\ClientService.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\service\ProductService.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\service\SaleService.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\view\ClientPanel.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\view\ProductPanel.java
+C:\UDEA\Tecnicas de Programacion\Comits\Proyecto_Tienda_De_Ropa\TIENDA_DE_ROPA\src\main\java\com\grupo4\manageclient\view\SalePanel.java
