@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author angel
  */
-public class ClientService {
+public class ClientService implements IClientService {
 
     private final IClientRepository clientRepository;
 
@@ -37,6 +37,7 @@ public class ClientService {
         }
     }
 
+    @Override
     public void registerClient(int idClient, String nameClient, String email, String phoneNumber) {
         validateClientData(idClient, nameClient, email, phoneNumber);
 
@@ -49,10 +50,12 @@ public class ClientService {
 
     }
 
+    @Override
     public List<Client> getAllClients() {
         return clientRepository.getAllClients();
     }
 
+    @Override
     public Client findClientById(int idClient) {
         Client client = clientRepository.findById(idClient);
         if (client == null) {
@@ -61,6 +64,7 @@ public class ClientService {
         return client;
     }
 
+    @Override
     public void updateClient(int idClient, String nameClient, String email, String phoneNumber) {
         validateClientData(idClient, nameClient, email, phoneNumber);
 
@@ -78,6 +82,7 @@ public class ClientService {
         }
     }
 
+    @Override
     public void deleteClient(int idClient) {
         Client existingClient = clientRepository.findById(idClient);
 

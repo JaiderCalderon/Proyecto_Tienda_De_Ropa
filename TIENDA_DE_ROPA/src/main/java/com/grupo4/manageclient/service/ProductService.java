@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author angel
  */
-public class ProductService {
+public class ProductService implements IProductService {
     private final IProductRepository productRepository;
 
     public ProductService(IProductRepository productRepository) {
@@ -41,6 +41,7 @@ public class ProductService {
         }
     }
 
+    @Override
     public void registerProduct(int idProduct, String nameProduct, String size, String color, double unitPrice,
             int stock) {
         validateProductData(idProduct, nameProduct, size, color, unitPrice, stock);
@@ -53,10 +54,12 @@ public class ProductService {
         productRepository.save(product);
     }
 
+    @Override
     public List<Product> getAllProducts() {
         return productRepository.getAllProducts();
     }
 
+    @Override
     public Product findProductById(int idProduct) {
         Product product = productRepository.findById(idProduct);
         if (product == null) {
@@ -65,6 +68,7 @@ public class ProductService {
         return product;
     }
 
+    @Override
     public void updateProduct(int idProduct, String name, String size, String color, double unitPrice, int stock) {
         validateProductData(idProduct, name, size, color, unitPrice, stock);
 
@@ -82,6 +86,7 @@ public class ProductService {
         }
     }
 
+    @Override
     public void deleteProduct(int idProduct) {
         Product existingProduct = productRepository.findById(idProduct);
 

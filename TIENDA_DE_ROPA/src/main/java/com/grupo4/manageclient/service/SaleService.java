@@ -16,18 +16,19 @@ import java.util.List;
  *
  * @author samuel
  */
-public class SaleService {
+public class SaleService implements ISaleService {
 
     private final ISaleRepository saleRepository;
-    private final ClientService clientService;
-    private final ProductService productService;
+    private final IClientService clientService;
+    private final IProductService productService;
 
-    public SaleService(ISaleRepository saleRepository, ClientService clientService, ProductService productService) {
+    public SaleService(ISaleRepository saleRepository, IClientService clientService, IProductService productService) {
         this.saleRepository = saleRepository;
         this.clientService = clientService;
         this.productService = productService;
     }
 
+    @Override
     public SaleDetail createSaleDetail(int idProduct, int quantity) {
         if (quantity <= 0) {
             throw new IllegalArgumentException("La cantidad debe ser mayor que cero.");
@@ -42,6 +43,7 @@ public class SaleService {
         return new SaleDetail(product, quantity);
     }
 
+    @Override
     public void registerSale(int idSale, int idClient, List<SaleDetail> details) {
         if (idSale <= 0) {
             throw new IllegalArgumentException("El ID de la venta debe ser mayor que cero.");
@@ -64,10 +66,12 @@ public class SaleService {
         saleRepository.save(sale);
     }
 
+    @Override
     public List<Sale> getAllSales() {
         return saleRepository.getAllSales();
     }
 
+    @Override
     public Sale findSaleById(int idSale) {
         Sale sale = saleRepository.findById(idSale);
 
