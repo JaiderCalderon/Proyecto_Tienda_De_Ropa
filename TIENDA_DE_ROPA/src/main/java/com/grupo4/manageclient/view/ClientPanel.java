@@ -85,21 +85,31 @@ public class ClientPanel extends javax.swing.JPanel {
     }
 
     private void deleteClient() {
-        try {
-            int selectedRow = TableClient.getSelectedRow();
-            if (selectedRow == -1) {
-                throw new IllegalArgumentException("Selecciona un cliente para eliminar.");
-            }
-
-            int idClient = Integer.parseInt(TableClient.getValueAt(selectedRow, 0).toString());
-            clientService.deleteClient(idClient);
-            refreshClientTable();
-            clearForm();
-            showMessage("Cliente eliminado correctamente.");
-        } catch (Exception ex) {
-            showError(ex.getMessage());
+    try {
+        int selectedRow = TableClient.getSelectedRow();
+        if (selectedRow == -1) {
+            throw new IllegalArgumentException("Selecciona un cliente para eliminar.");
         }
+
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "¿Estás seguro de que deseas eliminar este cliente?",
+                "Confirmar eliminación",
+                JOptionPane.YES_NO_OPTION);
+
+        if (confirm != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        int idClient = Integer.parseInt(TableClient.getValueAt(selectedRow, 0).toString());
+        clientService.deleteClient(idClient);
+        refreshClientTable();
+        clearForm();
+        showMessage("Cliente eliminado correctamente.");
+    } catch (Exception ex) {
+        showError(ex.getMessage());
     }
+}
 
     private void refreshClientTable() {
         DefaultTableModel model = (DefaultTableModel) TableClient.getModel();
