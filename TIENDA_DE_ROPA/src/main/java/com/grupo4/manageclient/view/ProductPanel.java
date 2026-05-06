@@ -29,7 +29,7 @@ public class ProductPanel extends javax.swing.JPanel {
 
     private void configureTable() {
         TableProduct.setModel(new DefaultTableModel(
-                new Object[]{"Código", "Producto", "Talla", "Color", "Precio", "Stock"}, 0) {
+                new Object[] { "Código", "Producto", "Talla", "Color", "Precio", "Stock" }, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -111,13 +111,13 @@ public class ProductPanel extends javax.swing.JPanel {
 
         List<Product> products = productService.getAllProducts();
         for (Product product : products) {
-            model.addRow(new Object[]{
-                product.getId(),
-                product.getName(),
-                product.getSize(),
-                product.getColor(),
-                product.getPrice(),
-                product.getStock()
+            model.addRow(new Object[] {
+                    product.getId(),
+                    product.getName(),
+                    product.getSize(),
+                    product.getColor(),
+                    product.getPrice(),
+                    product.getStock()
             });
         }
     }
@@ -379,35 +379,28 @@ public class ProductPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatePActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCreatePActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_btnCreatePActionPerformed
 
     private void btnClearPActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnClearPActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_btnClearPActionPerformed
 
     private void txtProductFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtProductFieldActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_txtProductFieldActionPerformed
 
     private void txtColorPFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtColorPFieldActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_txtColorPFieldActionPerformed
 
     private void txtSizePFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtSizePFieldActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_txtSizePFieldActionPerformed
 
     private void txtUnitPriceFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtUnitPriceFieldActionPerformed
-        // TODO add your handling code here:
+
     }// GEN-LAST:event_txtUnitPriceFieldActionPerformed
 
     private void txtStockFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtStockFieldActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_txtStockFieldActionPerformed
 
     private void btnSaveProductActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSaveProductActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_btnSaveProductActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
