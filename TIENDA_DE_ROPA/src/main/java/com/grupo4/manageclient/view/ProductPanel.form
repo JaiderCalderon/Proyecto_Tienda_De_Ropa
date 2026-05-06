@@ -19,37 +19,34 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="ToolBarProduct" min="-2" pref="524" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="tlbProduct" min="-2" pref="524" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="lblIdProduct" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="lblProductId" min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="lblNameProduct" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblSizeProduct" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblColorProduct" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblProductName" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblProductSize" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblProductColor" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblUnitPrice" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblStock" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblProductStock" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtIdProductField" min="-2" pref="223" max="-2" attributes="0"/>
-                          <Component id="txtStockField" min="-2" pref="223" max="-2" attributes="0"/>
-                          <Component id="txtColorPField" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
-                          <Component id="txtProductField" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
-                          <Component id="txtSizePField" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
-                          <Component id="txtUnitPriceField" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="txtProductId" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="txtProductStock" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="txtProductColor" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="txtProductName" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="txtProductSize" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="txtUnitPrice" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
-          <Component id="ScrollPaneProduct" alignment="0" max="32767" attributes="0"/>
+          <Component id="scrProducts" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
               <Component id="btnSaveProduct" min="-2" max="-2" attributes="0"/>
@@ -61,54 +58,54 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="ToolBarProduct" min="-2" pref="31" max="-2" attributes="0"/>
+              <Component id="tlbProduct" min="-2" pref="31" max="-2" attributes="0"/>
               <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtIdProductField" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="lblIdProduct" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtProductId" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="lblProductId" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblNameProduct" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtProductField" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="lblProductName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtProductName" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblSizeProduct" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtSizePField" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="lblProductSize" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtProductSize" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblColorProduct" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtColorPField" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="lblProductColor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtProductColor" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblUnitPrice" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtUnitPriceField" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="txtUnitPrice" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblStock" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtStockField" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="lblProductStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtProductStock" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="37" max="32767" attributes="0"/>
               <Component id="btnSaveProduct" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              <Component id="ScrollPaneProduct" min="-2" pref="224" max="-2" attributes="0"/>
+              <Component id="scrProducts" min="-2" pref="224" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JToolBar" name="ToolBarProduct">
+    <Container class="javax.swing.JToolBar" name="tlbProduct">
       <Properties>
         <Property name="rollover" type="boolean" value="true"/>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnCreateP">
+        <Component class="javax.swing.JButton" name="btnCreateProduct">
           <Properties>
             <Property name="text" type="java.lang.String" value="Crear Producto"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -122,35 +119,35 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreatePActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateProductActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnEditP">
+        <Component class="javax.swing.JButton" name="btnUpdateProduct">
           <Properties>
             <Property name="label" type="java.lang.String" value="Editar Producto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnDeleteP">
+        <Component class="javax.swing.JButton" name="btnDeleteProduct">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar Producto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnClearP">
+        <Component class="javax.swing.JButton" name="btnClearProductForm">
           <Properties>
             <Property name="text" type="java.lang.String" value="Limpiar Formulario"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearPActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearProductFormActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="txtIdProductField">
+    <Component class="javax.swing.JTextField" name="txtProductId">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Campo: Id del Producto"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblNameProduct">
+    <Component class="javax.swing.JLabel" name="lblProductName">
       <Properties>
         <Property name="text" type="java.lang.String" value="Producto:"/>
       </Properties>
@@ -158,7 +155,7 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Nombre del Producto"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblSizeProduct">
+    <Component class="javax.swing.JLabel" name="lblProductSize">
       <Properties>
         <Property name="text" type="java.lang.String" value="Talla:"/>
       </Properties>
@@ -166,7 +163,7 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Talla del producto"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblColorProduct">
+    <Component class="javax.swing.JLabel" name="lblProductColor">
       <Properties>
         <Property name="text" type="java.lang.String" value="Color:"/>
       </Properties>
@@ -174,7 +171,7 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Color del producto"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblIdProduct">
+    <Component class="javax.swing.JLabel" name="lblProductId">
       <Properties>
         <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
       </Properties>
@@ -182,20 +179,20 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="C&#xf3;digo del producto"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtProductField">
+    <Component class="javax.swing.JTextField" name="txtProductName">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Campo: Nombre dle producto"/>
       </AccessibilityProperties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtProductFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtProductNameActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtColorPField">
+    <Component class="javax.swing.JTextField" name="txtProductColor">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Campo: color del producto"/>
       </AccessibilityProperties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtColorPFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtProductColorActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblUnitPrice">
@@ -206,7 +203,7 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Precio del Producto"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblStock">
+    <Component class="javax.swing.JLabel" name="lblProductStock">
       <Properties>
         <Property name="text" type="java.lang.String" value="Stock:"/>
       </Properties>
@@ -214,28 +211,28 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Stock del producto"/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtSizePField">
+    <Component class="javax.swing.JTextField" name="txtProductSize">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Campo: Talla del producto"/>
       </AccessibilityProperties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSizePFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtProductSizeActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtUnitPriceField">
+    <Component class="javax.swing.JTextField" name="txtUnitPrice">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Campo: precio del producto"/>
       </AccessibilityProperties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUnitPriceFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUnitPriceActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtStockField">
+    <Component class="javax.swing.JTextField" name="txtProductStock">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Campo: stock del producto"/>
       </AccessibilityProperties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtStockFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtProductStockActionPerformed"/>
       </Events>
     </Component>
     <Component class="java.awt.Button" name="btnSaveProduct">
@@ -250,7 +247,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveProductActionPerformed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="ScrollPaneProduct">
+    <Container class="javax.swing.JScrollPane" name="scrProducts">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
@@ -261,7 +258,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="TableProduct">
+            <Component class="javax.swing.JTable" name="tblProducts">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="4">
