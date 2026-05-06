@@ -89,21 +89,31 @@ public class ProductPanel extends javax.swing.JPanel {
     }
 
     private void deleteProduct() {
-        try {
-            int selectedRow = TableProduct.getSelectedRow();
-            if (selectedRow == -1) {
-                throw new IllegalArgumentException("Selecciona un producto para eliminar.");
-            }
-
-            int idProduct = Integer.parseInt(TableProduct.getValueAt(selectedRow, 0).toString());
-            productService.deleteProduct(idProduct);
-            refreshProductTable();
-            clearForm();
-            showMessage("Producto eliminado correctamente.");
-        } catch (Exception ex) {
-            showError(ex.getMessage());
+    try {
+        int selectedRow = TableProduct.getSelectedRow();
+        if (selectedRow == -1) {
+            throw new IllegalArgumentException("Selecciona un producto para eliminar.");
         }
+
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "¿Estás seguro de que deseas eliminar este producto?",
+                "Confirmar eliminación",
+                JOptionPane.YES_NO_OPTION);
+
+        if (confirm != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        int idProduct = Integer.parseInt(TableProduct.getValueAt(selectedRow, 0).toString());
+        productService.deleteProduct(idProduct);
+        refreshProductTable();
+        clearForm();
+        showMessage("Producto eliminado correctamente.");
+    } catch (Exception ex) {
+        showError(ex.getMessage());
     }
+}
 
     private void refreshProductTable() {
         DefaultTableModel model = (DefaultTableModel) TableProduct.getModel();
