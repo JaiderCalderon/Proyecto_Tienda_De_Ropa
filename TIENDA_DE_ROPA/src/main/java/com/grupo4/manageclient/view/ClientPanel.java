@@ -5,7 +5,7 @@
 package com.grupo4.manageclient.view;
 
 import com.grupo4.manageclient.model.Client;
-import com.grupo4.manageclient.service.ClientService;
+import com.grupo4.manageclient.service.IClientService;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -17,9 +17,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ClientPanel extends javax.swing.JPanel {
 
-    private final ClientService clientService;
+    private final IClientService clientService;
 
-    public ClientPanel(ClientService clientService) {
+    public ClientPanel(IClientService clientService) {
         this.clientService = clientService;
         initComponents();
         configureTable();
