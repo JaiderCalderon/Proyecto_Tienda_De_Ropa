@@ -21,21 +21,28 @@ public class ClientService implements IClientService {
     }
 
     private void validateClientData(int idClient, String nameClient, String email, String phoneNumber) {
-        if (idClient <= 0) {
-            throw new IllegalArgumentException("El ID debe ser un número positivo mayor que cero.");
-        }
-
-        if (nameClient == null || nameClient.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nombre es obligatorio.");
-        }
-
-        if (email == null || email.trim().isEmpty()) {
-            throw new IllegalArgumentException("El correo es obligatorio.");
-        }
-        if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
-            throw new IllegalArgumentException("El teléfono es obligatorio.");
-        }
+    if (idClient <= 0) {
+        throw new IllegalArgumentException("El ID debe ser un número positivo mayor que cero.");
     }
+
+    if (nameClient == null || nameClient.trim().isEmpty()) {
+        throw new IllegalArgumentException("El nombre es obligatorio.");
+    }
+
+    if (email == null || email.trim().isEmpty()) {
+        throw new IllegalArgumentException("El correo es obligatorio.");
+    }
+    if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
+        throw new IllegalArgumentException("El correo no tiene un formato válido. Ejemplo: usuario@dominio.com");
+    }
+
+    if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
+        throw new IllegalArgumentException("El teléfono es obligatorio.");
+    }
+    if (!phoneNumber.matches("^\\d{7,10}$")) {
+        throw new IllegalArgumentException("El teléfono debe contener solo números y tener entre 7 y 10 dígitos.");
+    }
+}
 
     @Override
     public void registerClient(int idClient, String nameClient, String email, String phoneNumber) {
