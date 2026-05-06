@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author samue
+ * @author samuel
  */
 public class ClientPanel extends javax.swing.JPanel {
 
