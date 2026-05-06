@@ -28,83 +28,83 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="lblNameClient" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblPhoneClient" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblMailClient" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblIdClient" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblClientName" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblClientPhone" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblClientEmail" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblClientId" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtIdClient" alignment="0" pref="220" max="32767" attributes="0"/>
-                                  <Component id="txtNameClient" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtMailClient" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtPhoneClient" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtClientId" alignment="0" pref="220" max="32767" attributes="0"/>
+                                  <Component id="txtClientName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtClientEmail" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtClientPhone" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="238" max="-2" attributes="0"/>
-                              <Component id="lblTableClient" min="-2" pref="224" max="-2" attributes="0"/>
+                              <Component id="lblClientsTable" min="-2" pref="224" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="254" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ScrollPaneClient" max="32767" attributes="0"/>
+                      <Component id="scrClients" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jSeparator1" max="32767" attributes="0"/>
+                  <Component id="sepFormClientsTable" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="ToolBarClient" alignment="0" max="32767" attributes="0"/>
+          <Component id="tlbClient" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="ToolBarClient" min="-2" pref="25" max="-2" attributes="0"/>
+              <Component id="tlbClient" min="-2" pref="25" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblIdClient" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtIdClient" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblClientId" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtClientId" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtNameClient" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblNameClient" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtClientName" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblClientName" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblMailClient" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtMailClient" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblClientEmail" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtClientEmail" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblPhoneClient" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPhoneClient" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblClientPhone" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtClientPhone" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="69" max="32767" attributes="0"/>
               <Component id="btnSaveClient" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Component id="jSeparator1" min="-2" pref="12" max="-2" attributes="0"/>
+              <Component id="sepFormClientsTable" min="-2" pref="12" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="lblTableClient" min="-2" pref="39" max="-2" attributes="0"/>
+              <Component id="lblClientsTable" min="-2" pref="39" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Component id="ScrollPaneClient" min="-2" pref="348" max="-2" attributes="0"/>
+              <Component id="scrClients" min="-2" pref="348" max="-2" attributes="0"/>
               <EmptySpace pref="9" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JToolBar" name="ToolBarClient">
+    <Container class="javax.swing.JToolBar" name="tlbClient">
       <Properties>
         <Property name="rollover" type="boolean" value="true"/>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnCreateC">
+        <Component class="javax.swing.JButton" name="btnCreateClient">
           <Properties>
             <Property name="text" type="java.lang.String" value="Crear Cliente"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -112,7 +112,7 @@
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btneditC">
+        <Component class="javax.swing.JButton" name="btnUpdateClient">
           <Properties>
             <Property name="text" type="java.lang.String" value="Editar Cliente"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -120,7 +120,7 @@
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnDeleteC">
+        <Component class="javax.swing.JButton" name="btnDeleteClient">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar Cliente"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -128,7 +128,7 @@
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnClearC">
+        <Component class="javax.swing.JButton" name="btnClearClientForm">
           <Properties>
             <Property name="text" type="java.lang.String" value="Limpiar Formulario"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -138,42 +138,42 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblIdClient">
+    <Component class="javax.swing.JLabel" name="lblClientId">
       <Properties>
         <Property name="text" type="java.lang.String" value="ID:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblNameClient">
+    <Component class="javax.swing.JLabel" name="lblClientName">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nombre:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblMailClient">
+    <Component class="javax.swing.JLabel" name="lblClientEmail">
       <Properties>
         <Property name="text" type="java.lang.String" value="Correo:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblPhoneClient">
+    <Component class="javax.swing.JLabel" name="lblClientPhone">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tel&#xe9;fono:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtIdClient">
+    <Component class="javax.swing.JTextField" name="txtClientId">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtNameClient">
+    <Component class="javax.swing.JTextField" name="txtClientName">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtMailClient">
+    <Component class="javax.swing.JTextField" name="txtClientEmail">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPhoneClient">
+    <Component class="javax.swing.JTextField" name="txtClientPhone">
     </Component>
     <Component class="javax.swing.JButton" name="btnSaveClient">
       <Properties>
         <Property name="text" type="java.lang.String" value="Guardar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSeparator" name="jSeparator1">
+    <Component class="javax.swing.JSeparator" name="sepFormClientsTable">
     </Component>
-    <Component class="javax.swing.JLabel" name="lblTableClient">
+    <Component class="javax.swing.JLabel" name="lblClientsTable">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Tabla De Clientes"/>
@@ -184,7 +184,7 @@
         </Property>
       </Properties>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="ScrollPaneClient">
+    <Container class="javax.swing.JScrollPane" name="scrClients">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
@@ -195,7 +195,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="TableClient">
+            <Component class="javax.swing.JTable" name="tblClients">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
