@@ -5,7 +5,7 @@
 package com.grupo4.manageclient.view;
 
 import com.grupo4.manageclient.model.Product;
-import com.grupo4.manageclient.service.ProductService;
+import com.grupo4.manageclient.service.IProductService;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -17,9 +17,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ProductPanel extends javax.swing.JPanel {
 
-    private final ProductService productService;
+    private final IProductService productService;
 
-    public ProductPanel(ProductService productService) {
+    public ProductPanel(IProductService productService) {
         this.productService = productService;
         initComponents();
         configureTable();

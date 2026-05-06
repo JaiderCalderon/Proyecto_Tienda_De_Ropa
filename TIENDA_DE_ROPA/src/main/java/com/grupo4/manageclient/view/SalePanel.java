@@ -8,9 +8,9 @@ import com.grupo4.manageclient.model.Client;
 import com.grupo4.manageclient.model.Product;
 import com.grupo4.manageclient.model.Sale;
 import com.grupo4.manageclient.model.SaleDetail;
-import com.grupo4.manageclient.service.ClientService;
-import com.grupo4.manageclient.service.ProductService;
-import com.grupo4.manageclient.service.SaleService;
+import com.grupo4.manageclient.service.IClientService;
+import com.grupo4.manageclient.service.IProductService;
+import com.grupo4.manageclient.service.ISaleService;
  
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -37,9 +37,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SalePanel extends javax.swing.JPanel {
  
-    private final SaleService saleService;
-    private final ClientService clientService;
-    private final ProductService productService;
+    private final ISaleService saleService;
+    private final IClientService clientService;
+    private final IProductService productService;
  
     // Carrito de compras: almacena los productos antes de confirmar la venta.
     private final List<SaleDetail> cart = new ArrayList<>();
@@ -56,7 +56,7 @@ public class SalePanel extends javax.swing.JPanel {
     private JTable tblHistorial;
     private JLabel lblTotal;
  
-    public SalePanel(SaleService saleService, ClientService clientService, ProductService productService) {
+    public SalePanel(ISaleService saleService, IClientService clientService, IProductService productService) {
         this.saleService = saleService;
         this.clientService = clientService;
         this.productService = productService;
