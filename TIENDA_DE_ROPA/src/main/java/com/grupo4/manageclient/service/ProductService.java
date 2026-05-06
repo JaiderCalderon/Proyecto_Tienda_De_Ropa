@@ -33,8 +33,8 @@ public class ProductService implements IProductService {
         if (color == null || color.trim().isEmpty()) {
             throw new IllegalArgumentException("El color del producto no puede estar vacío.");
         }
-        if (unitPrice < 0) {
-            throw new IllegalArgumentException("El precio unitario del producto no puede ser negativo.");
+        if (unitPrice <= 0) {
+            throw new IllegalArgumentException("El precio unitario del producto no puede ser cero o negativo.");
         }
         if (stock < 0) {
             throw new IllegalArgumentException("El stock del producto no puede ser negativo.");
