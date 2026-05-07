@@ -197,26 +197,26 @@ private final IProductService productService;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cmbClients = new javax.swing.JComboBox<ClientItem>();
+        cmbClients = new javax.swing.JComboBox<>();
         lblCliente = new javax.swing.JLabel();
-        cmbProducts = new javax.swing.JComboBox<ProductItem>();
+        cmbProducts = new javax.swing.JComboBox<>();
         lblProducto = new javax.swing.JLabel();
         lblQuantity = new javax.swing.JLabel();
         txtQuantity = new javax.swing.JTextField();
         lblSaleId = new javax.swing.JLabel();
-        lblSaleName = new javax.swing.JLabel();
-        lblSaleQuantity = new javax.swing.JLabel();
-        lblSaleUnitaryPrice = new javax.swing.JLabel();
-        lblSaleSubtotal = new javax.swing.JLabel();
         btnConfirm = new javax.swing.JButton();
         lblDetails = new javax.swing.JLabel();
         lblHistory = new javax.swing.JLabel();
         ScrollPaneSale = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblHistorial = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jButtonAddCart = new javax.swing.JButton();
+        jScrollPaneCart = new javax.swing.JScrollPane();
+        jTableCart = new javax.swing.JTable();
+        jLabelTotal = new javax.swing.JLabel();
+        jButtonDeleteCart = new javax.swing.JButton();
 
-        cmbClients.setModel(new javax.swing.DefaultComboBoxModel<ClientItem>());
+        cmbClients.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbClients.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbClientsActionPerformed(evt);
@@ -225,20 +225,12 @@ private final IProductService productService;
 
         lblCliente.setText("Cliente");
 
-        cmbProducts.setModel(new javax.swing.DefaultComboBoxModel<ProductItem>());
+        cmbProducts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbProducts.setToolTipText("");
 
         lblProducto.setText("Producto");
 
         lblQuantity.setText("Cantidad");
-
-        lblSaleName.setText("ID:");
-
-        lblSaleQuantity.setText("Nombre:");
-
-        lblSaleUnitaryPrice.setText("Precio unitario:");
-
-        lblSaleSubtotal.setText("Subtotal:");
 
         btnConfirm.setText("Confirmar venta");
         btnConfirm.addActionListener(new java.awt.event.ActionListener() {
@@ -268,10 +260,32 @@ private final IProductService productService;
 
         ScrollPaneSale.setViewportView(jScrollPane2);
 
-        jButton1.setText("Agregar al carrito");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAddCart.setText("Agregar al carrito");
+        jButtonAddCart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonAddCartActionPerformed(evt);
+            }
+        });
+
+        jTableCart.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Producto", "Cantidad", "Precio Unitario", "Subtotal"
+            }
+        ));
+        jScrollPaneCart.setViewportView(jTableCart);
+
+        jLabelTotal.setText("Total: $0");
+
+        jButtonDeleteCart.setText("Eliminar Del Carrito");
+        jButtonDeleteCart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteCartActionPerformed(evt);
             }
         });
 
@@ -280,88 +294,99 @@ private final IProductService productService;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblSaleName, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSaleQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSaleUnitaryPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSaleSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cmbClients, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblSaleId, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonAddCart)
+                        .addGap(556, 556, 556))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSaleId, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmbProducts, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbClients, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(lblQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(52, 52, 52)
-                                .addComponent(jButton1)))))
-                .addContainerGap(45, Short.MAX_VALUE))
+                                .addComponent(cmbProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(305, 305, 305)
+                        .addComponent(lblDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(302, 302, 302)
+                        .addComponent(btnConfirm)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabelTotal)
+                .addGap(291, 291, 291))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(236, 236, 236))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnConfirm)
-                        .addGap(256, 256, 256))))
-            .addComponent(ScrollPaneSale)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPaneCart))
+                        .addComponent(ScrollPaneSale, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(284, 284, 284)
+                        .addComponent(lblHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonDeleteCart)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbClients, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCliente))
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbProducts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblProducto))
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblQuantity)
                     .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(21, 21, 21)
+                    .addComponent(jButtonAddCart))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblDetails)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSaleName)
-                    .addComponent(lblSaleQuantity)
-                    .addComponent(lblSaleUnitaryPrice)
-                    .addComponent(lblSaleSubtotal))
-                .addGap(31, 31, 31)
+                .addComponent(jScrollPaneCart, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonDeleteCart)
+                .addGap(1, 1, 1)
+                .addComponent(jLabelTotal)
+                .addGap(37, 37, 37)
                 .addComponent(btnConfirm)
                 .addGap(18, 18, 18)
                 .addComponent(lblHistory)
-                .addGap(26, 26, 26)
-                .addComponent(ScrollPaneSale, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ScrollPaneSale, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSaleId)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonAddCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCartActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonAddCartActionPerformed
+
+    private void jButtonDeleteCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteCartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDeleteCartActionPerformed
 
     private void cmbClientsActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cmbClientsActionPerformed
         // TODO add your handling code here:
@@ -374,20 +399,20 @@ private final IProductService productService;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPaneSale;
     private javax.swing.JButton btnConfirm;
-    private javax.swing.JComboBox<ClientItem> cmbClients;
-    private javax.swing.JComboBox<ProductItem> cmbProducts;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> cmbClients;
+    private javax.swing.JComboBox<String> cmbProducts;
+    private javax.swing.JButton jButtonAddCart;
+    private javax.swing.JButton jButtonDeleteCart;
+    private javax.swing.JLabel jLabelTotal;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPaneCart;
+    private javax.swing.JTable jTableCart;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblDetails;
     private javax.swing.JLabel lblHistory;
     private javax.swing.JLabel lblProducto;
     private javax.swing.JLabel lblQuantity;
     private javax.swing.JLabel lblSaleId;
-    private javax.swing.JLabel lblSaleName;
-    private javax.swing.JLabel lblSaleQuantity;
-    private javax.swing.JLabel lblSaleSubtotal;
-    private javax.swing.JLabel lblSaleUnitaryPrice;
     private javax.swing.JTable tblHistorial;
     private javax.swing.JTextField txtQuantity;
     // End of variables declaration//GEN-END:variables
