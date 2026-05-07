@@ -26,6 +26,7 @@ public class SalePanel extends javax.swing.JPanel {
     private final ISaleService saleService;
     private final IClientService clientService;
     private final IProductService productService;
+    private final List<SaleDetail> cart = new ArrayList<>();
 
     public SalePanel(ISaleService saleService, IClientService clientService, IProductService productService) {
         this.saleService = saleService;
@@ -38,10 +39,18 @@ public class SalePanel extends javax.swing.JPanel {
     }
 
     private void configureTables() {
+        // Tabla historial
         tblHistorial.setModel(new DefaultTableModel(
-
                 new Object[] { "Id de venta", "Cliente", "Total" }, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        });
 
+        // Tabla carrito
+        jTableCart.setModel(new DefaultTableModel(
+                new Object[] { "Producto", "Cantidad", "Precio unitario", "Subtotal" }, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -50,8 +59,6 @@ public class SalePanel extends javax.swing.JPanel {
     }
 
     private void bindEvents() {
-
-        // El evento de btnConfirm ya está conectado desde NetBeans en initComponents().
 
     }
 
@@ -71,27 +78,89 @@ public class SalePanel extends javax.swing.JPanel {
         }
     }
 
-    private void confirmSale() {
+    private void addToCart() {
         try {
-            ClientItem selectedClientItem = (ClientItem) cmbClients.getSelectedItem();
             ProductItem selectedProductItem = (ProductItem) cmbProducts.getSelectedItem();
-
-            if (selectedClientItem == null) {
-                throw new IllegalArgumentException("Debes seleccionar un cliente.");
-            }
 
             if (selectedProductItem == null) {
                 throw new IllegalArgumentException("Debes seleccionar un producto.");
             }
 
-            int idSale = generateNextSaleId();
             int quantity = parseInteger(txtQuantity.getText(), "cantidad");
 
-            SaleDetail detail = saleService.createSaleDetail(selectedProductItem.product.getId(), quantity);
-            List<SaleDetail> details = new ArrayList<>();
-            details.add(detail);
+            if (quantity <= 0) {
+                throw new IllegalArgumentException("La cantidad debe ser mayor a 0.");
+            }
 
-            saleService.registerSale(idSale, selectedClientItem.client.getId(), details);
+            SaleDetail detail = saleService.createSaleDetail(
+                    selectedProductItem.product.getId(),
+                    quantity);
+
+            cart.add(detail);
+
+            refreshCartTable();
+            txtQuantity.setText("");
+
+        } catch (Exception ex) {
+            showError(ex.getMessage());
+        }
+    }
+
+    private void removeFromCart() {
+        int selectedRow = jTableCart.getSelectedRow();
+
+        if (selectedRow < 0) {
+            showError("Selecciona un producto del carrito para eliminar.");
+            return;
+        }
+
+        cart.remove(selectedRow);
+        refreshCartTable();
+    }
+
+    private void refreshCartTable() {
+        DefaultTableModel model = (DefaultTableModel) jTableCart.getModel();
+        model.setRowCount(0);
+
+        double total = 0;
+
+        for (SaleDetail detail : cart) {
+
+            double subtotal = detail.getUnitPrice() * detail.getQuantity();
+            total += subtotal;
+
+            model.addRow(new Object[] {
+                    detail.getProduct().getName(),
+                    detail.getQuantity(),
+                    detail.getUnitPrice(),
+                    subtotal
+            });
+        }
+
+        jLabelTotal.setText("Total: $" + String.format("%.2f", total));
+    }
+
+    private void confirmSale() {
+        try {
+            ClientItem selectedClientItem = (ClientItem) cmbClients.getSelectedItem();
+
+            if (selectedClientItem == null) {
+                throw new IllegalArgumentException("Debes seleccionar un cliente.");
+            }
+            if (cart.isEmpty()) {
+                throw new IllegalArgumentException("El carrito está vacío. Agrega al menos un producto.");
+            }
+
+            int idSale = generateNextSaleId();
+            saleService.registerSale(idSale, selectedClientItem.client.getId(), new ArrayList<>(cart));
+
+            showMessage("Venta registrada exitosamente.");
+
+            // Limpiar estado
+            cart.clear();
+            refreshCartTable();
+            txtQuantity.setText("");
+            reloadData();
 
         } catch (Exception ex) {
             showError(ex.getMessage());
@@ -393,15 +462,15 @@ public class SalePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddCartActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonAddCartActionPerformed
-        // TODO add your handling code here:
+        addToCart();
     }// GEN-LAST:event_jButtonAddCartActionPerformed
 
     private void jButtonDeleteCartActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonDeleteCartActionPerformed
-        // TODO add your handling code here:
+        removeFromCart();
     }// GEN-LAST:event_jButtonDeleteCartActionPerformed
 
     private void cmbClientsActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cmbClientsActionPerformed
-        // TODO add your handling code here:
+
     }// GEN-LAST:event_cmbClientsActionPerformed
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {
