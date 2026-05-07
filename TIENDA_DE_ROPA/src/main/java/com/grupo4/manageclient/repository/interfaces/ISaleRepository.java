@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.grupo4.manageclient.repository;
+package com.grupo4.manageclient.repository.interfaces;
 
 import com.grupo4.manageclient.model.Sale;
 import java.util.List;

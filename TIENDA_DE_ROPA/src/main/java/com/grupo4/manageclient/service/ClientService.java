@@ -5,7 +5,7 @@
 package com.grupo4.manageclient.service;
 
 import com.grupo4.manageclient.model.Client;
-import com.grupo4.manageclient.repository.IClientRepository;
+import com.grupo4.manageclient.repository.interfaces.IClientRepository;
 import java.util.List;
 
 /**
