@@ -5,7 +5,7 @@
 package com.grupo4.manageclient.view;
 
 import com.grupo4.manageclient.model.Client;
-import com.grupo4.manageclient.service.ClientService;
+import com.grupo4.manageclient.service.IClientService;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -13,13 +13,13 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author samue
+ * @author samuel
  */
 public class ClientPanel extends javax.swing.JPanel {
 
-    private final ClientService clientService;
+    private final IClientService clientService;
 
-    public ClientPanel(ClientService clientService) {
+    public ClientPanel(IClientService clientService) {
         this.clientService = clientService;
         initComponents();
         configureTable();
@@ -28,24 +28,24 @@ public class ClientPanel extends javax.swing.JPanel {
     }
 
     private void configureTable() {
-        TableClient.setModel(new DefaultTableModel(
-                new Object[]{"ID", "Nombre", "Correo", "Teléfono"}, 0) {
+        tblClients.setModel(new DefaultTableModel(
+                new Object[] { "ID", "Nombre", "Correo", "Teléfono" }, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         });
-        TableClient.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tblClients.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 
     private void bindEvents() {
-        btnCreateC.addActionListener(e -> clearForm());
-        btnClearC.addActionListener(e -> clearForm());
+        btnCreateClient.addActionListener(e -> clearForm());
+        btnClearClientForm.addActionListener(e -> clearForm());
         btnSaveClient.addActionListener(e -> saveClient());
-        btneditC.addActionListener(e -> updateClient());
-        btnDeleteC.addActionListener(e -> deleteClient());
+        btnUpdateClient.addActionListener(e -> updateClient());
+        btnDeleteClient.addActionListener(e -> deleteClient());
 
-        TableClient.getSelectionModel().addListSelectionListener(event -> {
+        tblClients.getSelectionModel().addListSelectionListener(event -> {
             if (!event.getValueIsAdjusting()) {
                 loadSelectedClient();
             }
@@ -55,10 +55,10 @@ public class ClientPanel extends javax.swing.JPanel {
     private void saveClient() {
         try {
             clientService.registerClient(
-                    parseInteger(txtIdClient.getText(), "ID del cliente"),
-                    txtNameClient.getText().trim(),
-                    txtMailClient.getText().trim(),
-                    txtPhoneClient.getText().trim());
+                    parseInteger(txtClientId.getText(), "ID del cliente"),
+                    txtClientName.getText().trim(),
+                    txtClientEmail.getText().trim(),
+                    txtClientPhone.getText().trim());
 
             refreshClientTable();
             clearForm();
@@ -71,10 +71,10 @@ public class ClientPanel extends javax.swing.JPanel {
     private void updateClient() {
         try {
             clientService.updateClient(
-                    parseInteger(txtIdClient.getText(), "ID del cliente"),
-                    txtNameClient.getText().trim(),
-                    txtMailClient.getText().trim(),
-                    txtPhoneClient.getText().trim());
+                    parseInteger(txtClientId.getText(), "ID del cliente"),
+                    txtClientName.getText().trim(),
+                    txtClientEmail.getText().trim(),
+                    txtClientPhone.getText().trim());
 
             refreshClientTable();
             clearForm();
@@ -85,33 +85,43 @@ public class ClientPanel extends javax.swing.JPanel {
     }
 
     private void deleteClient() {
-        try {
-            int selectedRow = TableClient.getSelectedRow();
-            if (selectedRow == -1) {
-                throw new IllegalArgumentException("Selecciona un cliente para eliminar.");
-            }
-
-            int idClient = Integer.parseInt(TableClient.getValueAt(selectedRow, 0).toString());
-            clientService.deleteClient(idClient);
-            refreshClientTable();
-            clearForm();
-            showMessage("Cliente eliminado correctamente.");
-        } catch (Exception ex) {
-            showError(ex.getMessage());
+    try {
+        int selectedRow = tblClients.getSelectedRow();
+        if (selectedRow == -1) {
+            throw new IllegalArgumentException("Selecciona un cliente para eliminar.");
         }
+
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "¿Estás seguro de que deseas eliminar este cliente?",
+                "Confirmar eliminación",
+                JOptionPane.YES_NO_OPTION);
+
+        if (confirm != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        int idClient = Integer.parseInt(tblClients.getValueAt(selectedRow, 0).toString());
+        clientService.deleteClient(idClient);
+        refreshClientTable();
+        clearForm();
+        showMessage("Cliente eliminado correctamente.");
+    } catch (Exception ex) {
+        showError(ex.getMessage());
     }
+}
 
     private void refreshClientTable() {
-        DefaultTableModel model = (DefaultTableModel) TableClient.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblClients.getModel();
         model.setRowCount(0);
 
         List<Client> clients = clientService.getAllClients();
         for (Client client : clients) {
-            model.addRow(new Object[]{
-                client.getId(),
-                client.getName(),
-                client.getEmail(),
-                client.getPhoneNumber()
+            model.addRow(new Object[] {
+                    client.getId(),
+                    client.getName(),
+                    client.getEmail(),
+                    client.getPhoneNumber()
             });
         }
     }
@@ -121,24 +131,24 @@ public class ClientPanel extends javax.swing.JPanel {
     }
 
     private void loadSelectedClient() {
-        int selectedRow = TableClient.getSelectedRow();
+        int selectedRow = tblClients.getSelectedRow();
         if (selectedRow == -1) {
             return;
         }
 
-        txtIdClient.setText(TableClient.getValueAt(selectedRow, 0).toString());
-        txtNameClient.setText(TableClient.getValueAt(selectedRow, 1).toString());
-        txtMailClient.setText(TableClient.getValueAt(selectedRow, 2).toString());
-        txtPhoneClient.setText(TableClient.getValueAt(selectedRow, 3).toString());
+        txtClientId.setText(tblClients.getValueAt(selectedRow, 0).toString());
+        txtClientName.setText(tblClients.getValueAt(selectedRow, 1).toString());
+        txtClientEmail.setText(tblClients.getValueAt(selectedRow, 2).toString());
+        txtClientPhone.setText(tblClients.getValueAt(selectedRow, 3).toString());
     }
 
     private void clearForm() {
-        txtIdClient.setText("");
-        txtNameClient.setText("");
-        txtMailClient.setText("");
-        txtPhoneClient.setText("");
-        TableClient.clearSelection();
-        txtIdClient.requestFocus();
+        txtClientId.setText("");
+        txtClientName.setText("");
+        txtClientEmail.setText("");
+        txtClientPhone.setText("");
+        tblClients.clearSelection();
+        txtClientId.requestFocus();
     }
 
     private int parseInteger(String value, String fieldName) {
@@ -163,70 +173,71 @@ public class ClientPanel extends javax.swing.JPanel {
      * regenerated by the Form Editor.
      */
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ToolBarClient = new javax.swing.JToolBar();
-        btnCreateC = new javax.swing.JButton();
-        btneditC = new javax.swing.JButton();
-        btnDeleteC = new javax.swing.JButton();
-        btnClearC = new javax.swing.JButton();
-        lblIdClient = new javax.swing.JLabel();
-        lblNameClient = new javax.swing.JLabel();
-        lblMailClient = new javax.swing.JLabel();
-        lblPhoneClient = new javax.swing.JLabel();
-        txtIdClient = new javax.swing.JTextField();
-        txtNameClient = new javax.swing.JTextField();
-        txtMailClient = new javax.swing.JTextField();
-        txtPhoneClient = new javax.swing.JTextField();
+        tlbClient = new javax.swing.JToolBar();
+        btnCreateClient = new javax.swing.JButton();
+        btnUpdateClient = new javax.swing.JButton();
+        btnDeleteClient = new javax.swing.JButton();
+        btnClearClientForm = new javax.swing.JButton();
+        lblClientId = new javax.swing.JLabel();
+        lblClientName = new javax.swing.JLabel();
+        lblClientEmail = new javax.swing.JLabel();
+        lblClientPhone = new javax.swing.JLabel();
+        txtClientId = new javax.swing.JTextField();
+        txtClientName = new javax.swing.JTextField();
+        txtClientEmail = new javax.swing.JTextField();
+        txtClientPhone = new javax.swing.JTextField();
         btnSaveClient = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        lblTableClient = new javax.swing.JLabel();
-        ScrollPaneClient = new javax.swing.JScrollPane();
+        sepFormClientsTable = new javax.swing.JSeparator();
+        lblClientsTable = new javax.swing.JLabel();
+        scrClients = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        TableClient = new javax.swing.JTable();
+        tblClients = new javax.swing.JTable();
 
-        ToolBarClient.setRollover(true);
+        tlbClient.setRollover(true);
 
-        btnCreateC.setText("Crear Cliente");
-        btnCreateC.setFocusable(false);
-        btnCreateC.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCreateC.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ToolBarClient.add(btnCreateC);
+        btnCreateClient.setText("Crear Cliente");
+        btnCreateClient.setFocusable(false);
+        btnCreateClient.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCreateClient.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        tlbClient.add(btnCreateClient);
 
-        btneditC.setText("Editar Cliente");
-        btneditC.setFocusable(false);
-        btneditC.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btneditC.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ToolBarClient.add(btneditC);
+        btnUpdateClient.setText("Editar Cliente");
+        btnUpdateClient.setFocusable(false);
+        btnUpdateClient.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnUpdateClient.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        tlbClient.add(btnUpdateClient);
 
-        btnDeleteC.setText("Eliminar Cliente");
-        btnDeleteC.setFocusable(false);
-        btnDeleteC.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnDeleteC.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ToolBarClient.add(btnDeleteC);
+        btnDeleteClient.setText("Eliminar Cliente");
+        btnDeleteClient.setFocusable(false);
+        btnDeleteClient.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDeleteClient.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        tlbClient.add(btnDeleteClient);
 
-        btnClearC.setText("Limpiar Formulario");
-        btnClearC.setFocusable(false);
-        btnClearC.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnClearC.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ToolBarClient.add(btnClearC);
+        btnClearClientForm.setText("Limpiar Formulario");
+        btnClearClientForm.setFocusable(false);
+        btnClearClientForm.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClearClientForm.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        tlbClient.add(btnClearClientForm);
 
-        lblIdClient.setText("ID:");
+        lblClientId.setText("ID:");
 
-        lblNameClient.setText("Nombre:");
+        lblClientName.setText("Nombre:");
 
-        lblMailClient.setText("Correo:");
+        lblClientEmail.setText("Correo:");
 
-        lblPhoneClient.setText("Teléfono:");
+        lblClientPhone.setText("Teléfono:");
 
         btnSaveClient.setText("Guardar");
 
-        lblTableClient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTableClient.setText("Tabla De Clientes");
-        lblTableClient.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblClientsTable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblClientsTable.setText("Tabla De Clientes");
+        lblClientsTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        TableClient.setModel(new javax.swing.table.DefaultTableModel(
+        tblClients.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -237,9 +248,9 @@ public class ClientPanel extends javax.swing.JPanel {
                 "ID", "Nombre", "Correo", "Teléfono"
             }
         ));
-        jScrollPane2.setViewportView(TableClient);
+        jScrollPane2.setViewportView(tblClients);
 
-        ScrollPaneClient.setViewportView(jScrollPane2);
+        scrClients.setViewportView(jScrollPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -256,78 +267,78 @@ public class ClientPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lblNameClient)
-                                    .addComponent(lblPhoneClient)
-                                    .addComponent(lblMailClient)
-                                    .addComponent(lblIdClient))
+                                    .addComponent(lblClientName)
+                                    .addComponent(lblClientPhone)
+                                    .addComponent(lblClientEmail)
+                                    .addComponent(lblClientId))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtIdClient, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                                    .addComponent(txtNameClient)
-                                    .addComponent(txtMailClient)
-                                    .addComponent(txtPhoneClient)))
+                                    .addComponent(txtClientId, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                                    .addComponent(txtClientName)
+                                    .addComponent(txtClientEmail)
+                                    .addComponent(txtClientPhone)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(238, 238, 238)
-                                .addComponent(lblTableClient, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lblClientsTable, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 254, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(ScrollPaneClient))
-                    .addComponent(jSeparator1))
+                        .addComponent(scrClients))
+                    .addComponent(sepFormClientsTable))
                 .addContainerGap())
-            .addComponent(ToolBarClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(tlbClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(ToolBarClient, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tlbClient, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblIdClient)
-                    .addComponent(txtIdClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblClientId)
+                    .addComponent(txtClientId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNameClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNameClient))
+                    .addComponent(txtClientName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblClientName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMailClient)
-                    .addComponent(txtMailClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblClientEmail)
+                    .addComponent(txtClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPhoneClient)
-                    .addComponent(txtPhoneClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblClientPhone)
+                    .addComponent(txtClientPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(btnSaveClient)
                 .addGap(24, 24, 24)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sepFormClientsTable, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lblTableClient, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblClientsTable, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(ScrollPaneClient, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrClients, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(9, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane ScrollPaneClient;
-    private javax.swing.JTable TableClient;
-    private javax.swing.JToolBar ToolBarClient;
-    private javax.swing.JButton btnClearC;
-    private javax.swing.JButton btnCreateC;
-    private javax.swing.JButton btnDeleteC;
+    private javax.swing.JButton btnClearClientForm;
+    private javax.swing.JButton btnCreateClient;
+    private javax.swing.JButton btnDeleteClient;
     private javax.swing.JButton btnSaveClient;
-    private javax.swing.JButton btneditC;
+    private javax.swing.JButton btnUpdateClient;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lblIdClient;
-    private javax.swing.JLabel lblMailClient;
-    private javax.swing.JLabel lblNameClient;
-    private javax.swing.JLabel lblPhoneClient;
-    private javax.swing.JLabel lblTableClient;
-    private javax.swing.JTextField txtIdClient;
-    private javax.swing.JTextField txtMailClient;
-    private javax.swing.JTextField txtNameClient;
-    private javax.swing.JTextField txtPhoneClient;
+    private javax.swing.JLabel lblClientEmail;
+    private javax.swing.JLabel lblClientId;
+    private javax.swing.JLabel lblClientName;
+    private javax.swing.JLabel lblClientPhone;
+    private javax.swing.JLabel lblClientsTable;
+    private javax.swing.JScrollPane scrClients;
+    private javax.swing.JSeparator sepFormClientsTable;
+    private javax.swing.JTable tblClients;
+    private javax.swing.JToolBar tlbClient;
+    private javax.swing.JTextField txtClientEmail;
+    private javax.swing.JTextField txtClientId;
+    private javax.swing.JTextField txtClientName;
+    private javax.swing.JTextField txtClientPhone;
     // End of variables declaration//GEN-END:variables
 }
