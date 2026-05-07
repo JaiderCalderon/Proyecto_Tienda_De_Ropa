@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author samue
@@ -72,8 +71,6 @@ public class SalePanel extends javax.swing.JPanel {
         }
     }
 
-
-
     private void confirmSale() {
         try {
             ClientItem selectedClientItem = (ClientItem) cmbClients.getSelectedItem();
@@ -96,7 +93,10 @@ public class SalePanel extends javax.swing.JPanel {
 
             saleService.registerSale(idSale, selectedClientItem.client.getId(), details);
 
-
+        } catch (Exception ex) {
+            showError(ex.getMessage());
+        }
+    }
 
     private int generateNextSaleId() {
         List<Sale> sales = saleService.getAllSales();
@@ -129,6 +129,7 @@ public class SalePanel extends javax.swing.JPanel {
         loadProducts();
         refreshSalesHistory();
 
+    }
 
     private int parseInteger(String value, String fieldName) {
         try {
@@ -207,7 +208,6 @@ public class SalePanel extends javax.swing.JPanel {
         jLabelTotal = new javax.swing.JLabel();
         jButtonDeleteCart = new javax.swing.JButton();
 
-
         cmbClients.setModel(new javax.swing.DefaultComboBoxModel<ClientItem>());
         cmbClients.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,8 +223,6 @@ public class SalePanel extends javax.swing.JPanel {
         lblProducto.setText("Producto");
 
         lblQuantity.setText("Cantidad");
-
-
 
         btnConfirm.setText("Confirmar venta");
         btnConfirm.addActionListener(new java.awt.event.ActionListener() {
@@ -253,7 +251,6 @@ public class SalePanel extends javax.swing.JPanel {
 
         ScrollPaneSale.setViewportView(jScrollPane2);
 
-
         jButtonAddCart.setText("Agregar al carrito");
         jButtonAddCart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,7 +278,6 @@ public class SalePanel extends javax.swing.JPanel {
                 jButtonDeleteCartActionPerformed(evt);
             }
         });
-
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
