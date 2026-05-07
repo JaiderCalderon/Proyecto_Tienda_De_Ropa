@@ -8,7 +8,7 @@ import com.grupo4.manageclient.model.Client;
 import com.grupo4.manageclient.model.Product;
 import com.grupo4.manageclient.model.Sale;
 import com.grupo4.manageclient.model.SaleDetail;
-import com.grupo4.manageclient.repository.ISaleRepository;
+import com.grupo4.manageclient.repository.interfaces.ISaleRepository;
 import java.util.ArrayList;
 import java.util.List;
 

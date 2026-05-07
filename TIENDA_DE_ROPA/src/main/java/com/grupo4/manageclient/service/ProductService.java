@@ -5,7 +5,7 @@
 package com.grupo4.manageclient.service;
 
 import com.grupo4.manageclient.model.Product;
-import com.grupo4.manageclient.repository.IProductRepository;
+import com.grupo4.manageclient.repository.interfaces.IProductRepository;
 import java.util.List;
 
 /**

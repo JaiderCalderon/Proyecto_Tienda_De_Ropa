@@ -4,6 +4,7 @@
  */
 package com.grupo4.manageclient.repository;
 
+import com.grupo4.manageclient.repository.interfaces.IProductRepository;
 import com.grupo4.manageclient.model.Product;
 import java.util.ArrayList;
 import java.util.List;
