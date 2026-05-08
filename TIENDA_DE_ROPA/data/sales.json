@@ -1,0 +1,27 @@
+[
+  {
+    "idSale": 1,
+    "client": {
+      "idClient": 1038107531,
+      "nameClient": "Angel",
+      "email": "angel@gmail.com",
+      "phoneNumber": "3112109148"
+    },
+    "details": [
+      {
+        "product": {
+          "idProduct": 270716,
+          "nameProduct": "Camiseta Nacional",
+          "size": "XL",
+          "color": "Verde",
+          "unitPrice": 450000.0,
+          "stock": 100
+        },
+        "quantity": 1,
+        "unitPrice": 450000.0,
+        "subtotal": 450000.0
+      }
+    ],
+    "total": 450000.0
+  }
+]
