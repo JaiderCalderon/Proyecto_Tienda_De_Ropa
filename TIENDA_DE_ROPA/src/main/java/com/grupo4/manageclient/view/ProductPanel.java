@@ -227,7 +227,7 @@ public class ProductPanel extends javax.swing.JPanel {
         btnCreateProduct.addActionListener(this::btnCreateProductActionPerformed);
         tlbProduct.add(btnCreateProduct);
 
-        btnUpdateProduct.setLabel("Editar Producto");
+        btnUpdateProduct.setText("Editar Producto");
         tlbProduct.add(btnUpdateProduct);
 
         btnDeleteProduct.setText("Eliminar Producto");
@@ -401,13 +401,6 @@ public class ProductPanel extends javax.swing.JPanel {
 
     private void txtProductSizeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtProductSizeActionPerformed
     }// GEN-LAST:event_txtProductSizeActionPerformed
-
-    private void txtUnitPriceListenerActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtUnitPriceFieldActionPerformed
-
-    }// GEN-LAST:event_txtUnitPriceFieldActionPerformed
-
-    private void txtStockFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtStockFieldActionPerformed
-    }// GEN-LAST:event_txtStockFieldActionPerformed
 
     private void btnSaveProductActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSaveProductActionPerformed
     }// GEN-LAST:event_btnSaveProductActionPerformed
