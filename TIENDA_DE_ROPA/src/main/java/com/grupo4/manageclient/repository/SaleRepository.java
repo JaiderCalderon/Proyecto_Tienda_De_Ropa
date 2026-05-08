@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class SaleRepository implements ISaleRepository {
     
-    private static final String FILE_PATH = "data/sales.json";
+    private static final String FILE_PATH = System.getProperty("user.dir") + File.separator + "data" + File.separator + "sales.json";
     private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
     private final List<Sale> sales;
