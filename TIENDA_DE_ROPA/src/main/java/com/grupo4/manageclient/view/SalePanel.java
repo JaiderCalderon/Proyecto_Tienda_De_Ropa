@@ -34,7 +34,6 @@ public class SalePanel extends javax.swing.JPanel {
         this.productService = productService;
         initComponents();
         configureTables();
-        bindEvents();
         reloadData();
     }
 
@@ -58,9 +57,6 @@ public class SalePanel extends javax.swing.JPanel {
         });
     }
 
-    private void bindEvents() {
-
-    }
 
     private void loadClients() {
         cmbClients.removeAllItems();
