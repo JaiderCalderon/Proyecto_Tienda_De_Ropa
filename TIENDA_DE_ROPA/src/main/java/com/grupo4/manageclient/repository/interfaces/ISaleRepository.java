@@ -18,4 +18,6 @@ public interface ISaleRepository {
 
     Sale findById(int idSale);
 
+    boolean existsProductInSales(int idProduct);
+
 }
