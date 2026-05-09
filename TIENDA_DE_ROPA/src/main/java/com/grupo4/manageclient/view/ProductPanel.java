@@ -404,13 +404,11 @@ public class ProductPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtUnitPrice;
     // End of variables declaration//GEN-END:variables
 
-    private void txtUnitPriceActionPerformed(ActionEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private void txtUnitPriceActionPerformed(ActionEvent evt) {                                                                 // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+     
+                                                                    
 
-    private void txtProductStockActionPerformed(ActionEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private void txtProductStockActionPerformed(ActionEvent evt) {                                                               // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

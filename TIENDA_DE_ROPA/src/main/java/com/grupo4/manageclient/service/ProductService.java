@@ -4,8 +4,10 @@
  */
 package com.grupo4.manageclient.service;
 
+import com.grupo4.manageclient.repository.interfaces.ISaleRepository;
 import com.grupo4.manageclient.model.Product;
 import com.grupo4.manageclient.repository.interfaces.IProductRepository;
+
 import java.util.List;
 
 /**
@@ -14,9 +16,11 @@ import java.util.List;
  */
 public class ProductService implements IProductService {
     private final IProductRepository productRepository;
+    private final ISaleRepository saleRepository;
 
-    public ProductService(IProductRepository productRepository) {
+    public ProductService(IProductRepository productRepository, ISaleRepository saleRepository) {
         this.productRepository = productRepository;
+        this.saleRepository = saleRepository;
     }
 
     private void validateProductData(int idProduct, String nameProduct, String size, String color, double unitPrice,
@@ -92,6 +96,11 @@ public class ProductService implements IProductService {
 
         if (existingProduct == null) {
             throw new IllegalArgumentException("Producto no encontrado.");
+        }
+
+        if (saleRepository.existsProductInSales(idProduct)) {
+            throw new IllegalStateException(
+                    "No se puede eliminar el producto porque ya está asociado a ventas registradas.");
         }
 
         boolean deleted = productRepository.delete(idProduct);

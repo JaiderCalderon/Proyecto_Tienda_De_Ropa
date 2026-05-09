@@ -79,32 +79,54 @@ public class SalePanel extends javax.swing.JPanel {
     }
 
     private void addToCart() {
-        try {
-            ProductItem selectedProductItem = (ProductItem) cmbProducts.getSelectedItem();
+    try {
+        ProductItem selectedProductItem = (ProductItem) cmbProducts.getSelectedItem();
 
-            if (selectedProductItem == null) {
-                throw new IllegalArgumentException("Debes seleccionar un producto.");
-            }
-
-            int quantity = parseInteger(txtQuantity.getText(), "cantidad");
-
-            if (quantity <= 0) {
-                throw new IllegalArgumentException("La cantidad debe ser mayor a 0.");
-            }
-
-            SaleDetail detail = saleService.createSaleDetail(
-                    selectedProductItem.product.getId(),
-                    quantity);
-
-            cart.add(detail);
-
-            refreshCartTable();
-            txtQuantity.setText("");
-
-        } catch (Exception ex) {
-            showError(ex.getMessage());
+        if (selectedProductItem == null) {
+            throw new IllegalArgumentException("Debes seleccionar un producto.");
         }
+
+        int quantity = parseInteger(txtQuantity.getText(), "cantidad");
+
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("La cantidad debe ser mayor a 0.");
+        }
+
+        SaleDetail detail = saleService.createSaleDetail(
+                selectedProductItem.product.getId(),
+                quantity);
+
+        boolean found = false;
+
+        for (SaleDetail item : cart) {
+            if (item.getProduct().getId() == detail.getProduct().getId()) {
+
+                int newQuantity = item.getQuantity() + detail.getQuantity();
+
+                if (newQuantity > selectedProductItem.product.getStock()) {
+                    throw new IllegalArgumentException(
+                            "Stock insuficiente. Stock disponible: " 
+                            + selectedProductItem.product.getStock()
+                    );
+                }
+
+                item.setQuantity(newQuantity);
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            cart.add(detail);
+        }
+
+        refreshCartTable();
+        txtQuantity.setText("");
+
+    } catch (Exception ex) {
+        showError(ex.getMessage());
     }
+}
 
     private void removeFromCart() {
         int selectedRow = tblCart.getSelectedRow();
