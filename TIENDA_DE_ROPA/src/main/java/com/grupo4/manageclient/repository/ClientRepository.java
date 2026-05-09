@@ -23,7 +23,7 @@ import java.util.List;
 
 public class ClientRepository implements IClientRepository {
     
-    private static final String FILE_PATH = "data/clients.json";
+    private static final String FILE_PATH = System.getProperty("user.dir") + File.separator + "data" + File.separator + "clients.json";
     private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     private final List<Client> clients;

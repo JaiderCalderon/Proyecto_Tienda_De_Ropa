@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class ProductRepository implements IProductRepository {
 
-    private static final String FILE_PATH = "data/products.json";
+    private static final String FILE_PATH = System.getProperty("user.dir") + File.separator + "data" + File.separator + "products.json";
     private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
     private final List<Product> products;
