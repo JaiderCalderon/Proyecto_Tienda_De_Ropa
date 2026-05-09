@@ -213,9 +213,9 @@ public class ProductPanel extends javax.swing.JPanel {
         txtProductSize = new javax.swing.JTextField();
         txtUnitPrice = new javax.swing.JTextField();
         txtProductStock = new javax.swing.JTextField();
-        btnSaveProduct = new java.awt.Button();
+        btnSaveProduct = new javax.swing.JButton();
         scrProducts = new javax.swing.JScrollPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrProductsWrapper = new javax.swing.JScrollPane();
         tblProducts = new javax.swing.JTable();
 
         tlbProduct.setRollover(true);
@@ -259,7 +259,7 @@ public class ProductPanel extends javax.swing.JPanel {
 
         txtProductStock.addActionListener(this::txtProductStockActionPerformed);
 
-        btnSaveProduct.setLabel("Guardar");
+        btnSaveProduct.setText("Guardar");
         btnSaveProduct.setName(""); // NOI18N
         btnSaveProduct.addActionListener(this::btnSaveProductActionPerformed);
 
@@ -274,9 +274,9 @@ public class ProductPanel extends javax.swing.JPanel {
                 "Codigo", "Producto", "Talla", "Color", "Precio", "Stock"
             }
         ));
-        jScrollPane1.setViewportView(tblProducts);
+        scrProductsWrapper.setViewportView(tblProducts);
 
-        scrProducts.setViewportView(jScrollPane1);
+        scrProducts.setViewportView(scrProductsWrapper);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -384,9 +384,9 @@ public class ProductPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnClearProductForm;
     private javax.swing.JButton btnCreateProduct;
     private javax.swing.JButton btnDeleteProduct;
-    private java.awt.Button btnSaveProduct;
+    private javax.swing.JButton btnSaveProduct;
     private javax.swing.JButton btnUpdateProduct;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane scrProductsWrapper;
     private javax.swing.JLabel lblProductColor;
     private javax.swing.JLabel lblProductId;
     private javax.swing.JLabel lblProductName;

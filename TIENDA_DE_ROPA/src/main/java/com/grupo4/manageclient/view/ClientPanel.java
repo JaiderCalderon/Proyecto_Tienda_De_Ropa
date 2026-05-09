@@ -194,7 +194,7 @@ public class ClientPanel extends javax.swing.JPanel {
         sepFormClientsTable = new javax.swing.JSeparator();
         lblClientsTable = new javax.swing.JLabel();
         scrClients = new javax.swing.JScrollPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scrClientsWrapper = new javax.swing.JScrollPane();
         tblClients = new javax.swing.JTable();
 
         tlbClient.setRollover(true);
@@ -248,9 +248,9 @@ public class ClientPanel extends javax.swing.JPanel {
                 "ID", "Nombre", "Correo", "Teléfono"
             }
         ));
-        jScrollPane2.setViewportView(tblClients);
+        scrClientsWrapper.setViewportView(tblClients);
 
-        scrClients.setViewportView(jScrollPane2);
+        scrClients.setViewportView(scrClientsWrapper);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -326,7 +326,7 @@ public class ClientPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDeleteClient;
     private javax.swing.JButton btnSaveClient;
     private javax.swing.JButton btnUpdateClient;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane scrClientsWrapper;
     private javax.swing.JLabel lblClientEmail;
     private javax.swing.JLabel lblClientId;
     private javax.swing.JLabel lblClientName;

@@ -290,7 +290,7 @@ public class SalePanel extends javax.swing.JPanel {
         lblCartDetails = new javax.swing.JLabel();
         lblSalesHistory = new javax.swing.JLabel();
         scrSales = new javax.swing.JScrollPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scrSalesWrapper = new javax.swing.JScrollPane();
         tblSalesHistory = new javax.swing.JTable();
         btnAddToCart = new javax.swing.JButton();
         scrCart = new javax.swing.JScrollPane();
@@ -339,9 +339,9 @@ public class SalePanel extends javax.swing.JPanel {
                 new String[] {
                         "Id de venta", "Cliente", "Total"
                 }));
-        jScrollPane2.setViewportView(tblSalesHistory);
+        scrSalesWrapper.setViewportView(tblSalesHistory);
 
-        scrSales.setViewportView(jScrollPane2);
+        scrSales.setViewportView(scrSalesWrapper);
 
         btnAddToCart.setText("Agregar al carrito");
         btnAddToCart.addActionListener(new java.awt.event.ActionListener() {
@@ -506,7 +506,7 @@ public class SalePanel extends javax.swing.JPanel {
     private javax.swing.JButton btnRemoveFromCart;
     private javax.swing.JComboBox<ClientItem> cmbClients;
     private javax.swing.JComboBox<ProductItem> cmbProducts;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane scrSalesWrapper;
     private javax.swing.JLabel lblCartDetails;
     private javax.swing.JLabel lblClients;
     private javax.swing.JLabel lblProducts;
